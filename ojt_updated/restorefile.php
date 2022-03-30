@@ -1,0 +1,19 @@
+<?php
+include("connection.php");
+
+if (isset($_GET['restoreid'])) {
+	$File_ID=$_GET['restoreid'];
+	$sql = "INSERT INTO filetbl SELECT * FROM recycletbl WHERE File_ID = $File_ID";
+	$result = mysqli_query($connections, $sql);
+	if ($result) {
+		$date_removed = date('Y-m-d H:i:s');
+		$expiraton = date('Y-m-d H:i:s', strtotime('+7 days'));
+		mysqli_query($connections, "UPDATE filetbl SET LastModified = '".$date_removed."', Expiration = '".$expiraton."' WHERE File_ID = '".$File_ID."'");
+		mysqli_query($connections, "DELETE FROM recycletbl WHERE File_ID=$File_ID");
+		echo "File Restored";
+		header('location: intern/recycle-bin-dashboard.php');
+	}else{
+		die(mysqli_error($connections));
+	}
+}
+?>
