@@ -114,7 +114,8 @@ if($email && $password){
 <!DOCTYPE html>
 <html>
 <head>
-	<title>MCC FILE MONITORING</title>
+	<link type="image/png" rel="icon" href="img/uip-logo.jpg">
+	<title>MCC: File Monitoring</title>
 	<!-- LOCAL CSS -->
 	<link rel="stylesheet" type="text/css" href="css/login-register.css">
 </head>
