@@ -10,5 +10,3 @@ sidebarBtn.onclick = function(){
 		sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
 	}
 }
-
-$('th').css('pointer-events','none');

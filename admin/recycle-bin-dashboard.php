@@ -2,7 +2,8 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>UIP Dashboard</title>
+	<title>MCC: Recycle Bin</title>
+    <link type="image/png" rel="icon" href="../img/homeicon.png">
 	<meta name="viewport" content="width=device-witdth, initial-scale=1.0">
 	<!-- BOXICONS CDN -->
 	<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
@@ -23,7 +24,7 @@
 			<li>
 				<a href="mcc-files.php">
 					<i class='bx bx-grid-alt'></i>
-					<span class="link-name">Files</span>
+					<span class="link-name">Home</span>
 				</a>
 			</li>
 <li>
@@ -57,8 +58,7 @@
 				<i class='bx bx-search'></i>
 			</div> -->
 			<div class="d-flex justify-content-center align-items-center">
-                <a href="#" style="color: #ED682A;"><i class="fa-solid fa-bullhorn mr-4"></i></a>
-                <span class="name">INTERN</span>
+                <span class="name">Admin</span>
             </div>
 		</nav>
 

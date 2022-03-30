@@ -10,7 +10,6 @@
 body{
 	min-height: 100vh;
 	width: 100%;
-	overflow-y: hidden;
 }
 
 .sidebar{
@@ -209,8 +208,8 @@ body{
 .wrapper form{
     height: 85px;
     display: flex;
-    align-items: center;
     cursor: pointer;
+    align-items: center;
     justify-content: center;
     flex-direction: column;
     border-radius: 5px;
@@ -218,25 +217,18 @@ body{
 }
 
 .wrapper input{
-	color: white;
+	color: #fff;
 }
 
 .wrapper button{
 	width: 50%;
-	background: #6A757A;
-	border: 1px solid black;
-	color: white;
+	background: #373d3f;
+	border: none;
+	color: #fff;
 	font-weight: 500;
 	border-radius: 10px;
 	margin-top: 2px;
 	letter-spacing: 2px;
-}
-
-.wrapper button:hover{
-	background: #373d3f;  
-	color: #fff;
-	cursor: pointer;
-	border: 1px solid #7f7f7f;
 }
 
 form :where(i, p){

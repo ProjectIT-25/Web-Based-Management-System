@@ -1,6 +1,6 @@
 <?php
 include("connection.php");
-
+// LOGIN START
 
 $email = $password = "";
 $emailErr = $passwordErr = "";
@@ -19,66 +19,147 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 }
 
 if($email && $password){
-$check_email = mysqli_query($connections,"SELECT id, Email, Password, UserLevel FROM interntbl where Email='$email' UNION SELECT id, Email, Password, UserLevel FROM admintbl where Email='$email'");
-$check_email_row = mysqli_num_rows($check_email);
+	$check_email = mysqli_query($connections,"SELECT id, Email, Password, UserLevel FROM interntbl where Email='$email' UNION SELECT id, Email, Password, UserLevel FROM admintbl where Email='$email'");
+	$check_email_row = mysqli_num_rows($check_email);
 
-if ($check_email_row > 0) { 
-	while($row = mysqli_fetch_assoc($check_email)){
-		$user_id = $row["id"];
+	if ($check_email_row > 0) { 
+		while($row = mysqli_fetch_assoc($check_email)){
+			$user_id = $row["id"];
 
-		$db_password = $row["Password"];
-		$db_account_type = $row["UserLevel"];
+			$db_password = $row["Password"];
+			$db_account_type = $row["UserLevel"];
 
-		if($password == $db_password){
-			session_start();
-			$_SESSION["id"] = $user_id;
-			if($db_account_type == 0){
-				echo "<script>window.location.href='admin/mcc-files.php';</script>";
-			}
-			else{
-				echo "<script>window.location.href='intern/mcc-files.php';</script>";
-			}
-		}
-		else{
-			$passwordErr = "Password is incorrect!";
-		}
+			if($password == $db_password){
+				session_start();
+				$_SESSION["id"] = $user_id;
+				if($db_account_type == 0){
 
-	}
+					echo "
+					<script type='text/javascript'>setTimeout(function () { 
+						const Toast = Swal.mixin({
+							toast: true,
+							position: 'top-end',
+							showConfirmButton: false,
+							timer: 10000,
+							timerProgressBar: true,
+							})
+							Toast.fire({
+								icon: 'success',
+								title: 'Signed in successfully'
 
-}else{
-	$emailErr = "Email is is incorrect!";
+								}); 
+								},100)</script>;
 
-}
-}
-?>
+								<script>window.location.href='admin/mcc-files.php';</script>";
+				}
+				else{
+					echo "
+					<script type='text/javascript'>setTimeout(function () { 
+						const Toast = Swal.mixin({
+							toast: true,
+							position: 'top-end',
+							showConfirmButton: false,
+							timer: 10000,
+							timerProgressBar: true,
+							})
+							Toast.fire({
+								icon: 'success',
+								title: 'Signed in successfully'
+
+								}); 
+								},100)</script>;
+
+								<script>window.location.href='intern/mcc-files.php';</script>";
+								
+							}
+						}else{
+							echo 
+							" <script type='text/javascript'>setTimeout(function () { 
+								Swal.fire({
+									title: 'Oops...',
+									icon: 'error',
+									text: 'Wrong email/password combination!',
+									allowOutsideClick: true,
+									allowEscapeKey: true,
+									allowEnterKey: false,
+									timerProgressBar: true,
+									timer: 6000,
+									showConfirmButton: false,
+									}); 
+								},100)</script>";
+
+							}
+
+						}
+
+					}else{
+						echo 
+						" <script type='text/javascript'>setTimeout(function () { 
+							Swal.fire({
+								title: 'Oops...',
+								icon: 'error',
+								text: 'Wrong email/password combination!',
+								allowOutsideClick: true,
+								allowEscapeKey: true,
+								allowEnterKey: false,
+								timerProgressBar: true,
+								timer: 6000,
+								showConfirmButton: false,
+								}); 
+							},100)</script>";
+
+						}
+					}
+				?>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>UIP Login Page</title>
-	<link rel="icon" href="uip-logo.jpg">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-	<link rel="stylesheet" type="text/css" href="css/login-page.css">
+	<title>MCC FILE MONITORING</title>
+	<!-- LOCAL CSS -->
+	<link rel="stylesheet" type="text/css" href="css/login-register.css">
 </head>
 <body>
-	<div class="login-form">
-		<form method = "POST" action = "<?php htmlspecialchars ($_SERVER["PHP_SELF"]); ?>">
-			<header class="pb-4">Login into Dashboard</header>
-			<div class="form-group pb-4">
-				<input type="text" class="form-control" placeholder="Email Address" name="email" required autofocus>
-				<span class = "error"><?php echo $emailErr; ?></span><br>
+	<div class="hero">
+		<div class="form-box">
+			<div class="button-box">
+				<div id="btn"></div>
+				<button type="button" class="toggle-btn" onclick="Login()">Login</button>
+				<button type="button" class="toggle-btn" onclick="Register()">Register</button>
 			</div>
-			<div class="form-group input-group" id="show_hide_password" style="margin-bottom: 0;">
-				<input class="form-control" type="password" name="password" placeholder="Password" required>
-				<div class="input-group-addon">
-					<a href=""><i class="fa-regular fa-eye"></i></a>
-				</div>
-				<script type="text/javascript">
+			<!-- LOGIN FORM START -->
+			<form id="login" class="input-group form-group" form method = "POST" action = "index.php">
+				<p>Login to Dashboard</p>
+				<input type="text" class="input-field" placeholder="Email" name="email" required autofocus></input>
+				<input type="password" class=" input-field" placeholder="Password" name="password" required></input>
+				<button type="submit" class="submit-btn" name="login">Log in</button>
+			</form>
+			<!-- LOGIN FORM END -->
+			<!-- REGISTER FORM START -->
+			<form id="register" class="input-group" method="post" action="register.php">
+				<p>Create an Account</p>
+				<input type="text" class="input-field" placeholder="Application Number" name="appNumber" required autofocus></input>
+				<select name="team" required>
+					<option value="" disabled selected>Choose team</option>
+					<option value="MCC IT Course">MCC IT Course</option>
+				</select>
+				<select name="userLvl" required>
+					<option value="" disabled selected>Choose User Level</option>
+					<option value="0">Admin</option>
+					<option value="1">Intern</option>
+				</select>
+				<input type="text" class="input-field" placeholder="First Name" name="fname" required autofocus></input>
+				<input type="text" class="input-field" placeholder="Middle Name" name="mname" required></input>
+				<input type="text" class="input-field" placeholder="Last Name" name="lname" required></input>
+				<input type="text" class="input-field" placeholder="Suffix"name="suffix"></input>
+				<input type="text" class="input-field" placeholder="Email" name="email" required></input>
+				<input type="password" class="input-field" placeholder="Password" name="password" required></input>
+				<input type="password" class="input-field" placeholder="Confirm Password" name="cpassword" required></input>
+				<button type="submit" class="submit-btn" name="register">Register</button>
+			</form>
+			<!-- REGISTER FORM START -->
+		</div>
+	</div><a href="#"><i class="fa-regular fa-eye"></i></a>
+					<script type="text/javascript">
 					$(document).ready(function() {
 						$("#show_hide_password a").on('click', function(event) {
 							event.preventDefault();
@@ -94,18 +175,16 @@ if ($check_email_row > 0) {
 						});
 					});
 				</script>
-			</div>
-			<span class = "error"><?php echo $passwordErr; ?></span><br>
-			<button type="submit" class="btn btn-block mt-4" name="login">Login</button>
-		</form>
-	</div>
 	<footer>
 		<div class="flinks">
-			<a href="http://uip.melhamconstruction.ph/intern-application/">UIP Application</a>
+			<a href="http://uip.melhamconstruction.ph/">UIP Dashboard</a>
 			<a href="https://melhamconstruction.ph/">Melham Construction</a>
 			<a href="http://anafara.com/">Anafara</a>
 		</div>
 		&copy; Copyright 2022 - Project-IT-25 - Melham Construction Interns
 	</footer>
+	<!-- LOCAL CSS -->
+	<script type="text/javascript" src="js/switch-form.js"></script>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>MCC ANNOUNCEMENT & EVENTS</title>
+  <title>MCC: Announcement & Events</title>
+  <link type="image/png" rel="icon" href="../img/homeicon.png">
   <meta name="viewport" content="width=device-witdth, initial-scale=1.0">
   <!-- BOXICONS CDN -->
   <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
@@ -53,11 +54,10 @@
   <section class="home-section">
     <nav class="">
       <div class="sidebar-button">
-        <span class="dashboard">ANNOUCEMENTS</span>
+        <span class="dashboard">ANNOUNCEMENTS</span>
       </div>
 
       <div class="d-flex justify-content-center align-items-center">
-
         <span class="name">Intern</span>
       </div>
     </nav>

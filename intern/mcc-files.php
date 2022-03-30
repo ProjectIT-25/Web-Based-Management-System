@@ -1,10 +1,13 @@
-<?php include '../connection.php'; 
-?>
+<?php 
+include("../connection.php");
+   
+        ?>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
-    <title>MCC DASHBOARD</title>
+    <title>MCC: File Dashboard</title>
+    <link type="image/png" rel="icon" href="../img/homeicon.png">
     <meta name="viewport" content="width=device-witdth, initial-scale=1.0">
     <!-- BOXICONS CDN -->
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
@@ -16,6 +19,7 @@
     <link rel="stylesheet" type="text/css" href="../css/filesdashboard.css">
 </head>
 <body>
+
     <div class="sidebar" style="border-right: 1px solid #003860;">
         <div class="menu-details">
             <i class='bx bx-menu sidebarBtn'></i>
@@ -52,14 +56,13 @@
 <section class="home-section">
   <nav class="">
    <div class="sidebar-button">
-    <span class="dashboard">DASHBOARD</span>
+    <span class="dashboard">INTERN DASHBOARD</span>
 </div>
             <!-- <div class="search-box">
                 <input type="text" name="" placeholder="Search">
                 <i class='bx bx-search'></i>
             </div> -->
             <div class="d-flex justify-content-center align-items-center">
-                <a href="#" style="color: #ED682A;"><i class="fa-solid fa-bullhorn mr-4"></i></a>
                 <span class="name">Intern</span>
             </div>
         </nav>
@@ -190,6 +193,7 @@
 <script type="text/javascript" src="../js/sidebar.js"></script>
 <script type="text/javascript" src="../js/update-modal.js"></script>
 <script type="text/javascript" src="../js/search.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
 

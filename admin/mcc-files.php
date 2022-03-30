@@ -2,7 +2,8 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>UIP Dashboard</title>
+    <title>MCC: File Dashboard</title>
+    <link type="image/png" rel="icon" href="../img/homeicon.png">
     <meta name="viewport" content="width=device-witdth, initial-scale=1.0">
     <!-- BOXICONS CDN -->
     <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
@@ -11,7 +12,7 @@
     <!-- BOOTSTRAP 4 CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- LOCAL CSS -->
-    <link rel="stylesheet" type="text/css" href="../css/filesdashboard.css">
+    <link rel="stylesheet" type="text/css" href="../css/a-filesdashboard.css">
   
 
 </head>
@@ -25,7 +26,7 @@
             <li>
                 <a href="#">
                     <i class= "bx bx-grid-alt text-white"></i>
-                    <span class="link-name text-white">Files</span>
+                    <span class="link-name text-white">Home</span>
                 </a>
             </li>
                 <li>
@@ -41,7 +42,7 @@
                 </a>
             </li>
             <li>
-                <a href="../logout.php">
+                <a href="#">
                     <i class='bx bx-log-out'></i>
                     <span class="link-name">Logout</span>
                 </a>
@@ -59,16 +60,15 @@
                 <i class='bx bx-search'></i>
             </div> -->
             <div class="d-flex justify-content-center align-items-center">
-                <a href="#" style="color: #ED682A;"><i class="fa-solid fa-bullhorn mr-4"></i></a>
-                <span class="name">ADMIN USER</span>
+                <span class="name">Admin</span>
             </div>
         </nav>
 
         <div class="container-fluid px-4">
             <div class="row g3 my-3">
                 <div class="col-md-6 overview">
-            <a href="announcement.html">
-                        <div class="p-3 shadow-sm d-flex justify-content-around align-items-center rounded" style="background-color: #4682B4; padding: 90px !important;">
+            <a href="announcement.php">
+                        <div class="p-3 shadow-sm d-flex justify-content-around align-items-center rounded" style="background-color: #4682B4; margin:  18px;padding: 115px !important;">
                             <div>
                                 <h1 class="fs-2 text-white">TODAY'S EVENT</h3>
                             </div>
@@ -77,7 +77,7 @@
                     </div>
                
            <div class="col-md-6 overview">
-           <canvas id="myChart" style="width:70%;max-width:700px"></canvas>
+           <canvas id="myChart" style="height:50px;max-width:650px"></canvas>
             </div>
          </div>
         </div>
@@ -94,143 +94,132 @@
                         <table class="table sortable table-responsive-md table-bordered bg-white rounded shadow-sm  table-striped text-center">
                             <thead class="thead-color" style="position: sticky; top: 0;">
                                 <tr>
-                                    <th scope="col">ID</th>
                                     <th scope="col">Team</th>
                                     <th scope="col">File Owner</th>
                                     <th scope="col">File Name</th>
-                                    <th scope="col">Date</th>
-                                    <th scope="col">Type</th>
-                                    <th scope="col">Size</th>
+                                    <th scope="col">File Type</th>
+                                    <th scope="col">File Size</th>
+                                    <th scope="col">Last Date Modified</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr class="item">
-                                    <td>1</td>
                                     <td>Project-IT-12</td>
                                     <td>Julienne Pineda</td>
                                     <td>Brainstorming about Project Proposal</td>
+                                    <td>PDF</td>     
+                                    <td>0.9 MB</td>                              
                                     <td>03/09/2022</td>
-                                    <td>PDF</td>
-                                    <td>0.9 MB</td>
-                                    <td><a href="#"><i class="fa-solid fa-pen-to-square text-dark" style="font-size: 20px;"></i></a>
-                                        <a href="#"><i class="fa-solid fa-unlock text-dark" style="font-size: 20px;"></i></a></td>
+                                    <td><a href="#"><i class="fa-solid fa-eye text-dark" style="font-size: 20px; "></i></a>
+                                        <a href="#"><i class="fa-solid fa-trash text-dark" style="font-size: 20px;"></i></a></td>
                                 </tr>
                                 <tr class="item">
-                                    <td>2</td>
                                     <td>Project-IT-32</td>
                                     <td>Clarisse Berondo</td>
                                     <td>Progress Report Meeting Presentation</td>
-                                    <td>03/08/2022</td>
                                     <td>PDF</td>
                                     <td>2.0 MB</td>
-                                    <td><a href="#"><i class="fa-solid fa-pen-to-square text-dark" style="font-size: 20px;"></i></a>
-                                        <a href="#"><i class="fa-solid fa-lock text-dark" style="font-size: 20px;"></i></a></td>
+                                    <td>03/08/2022</td>
+                                    <td><a href="#"><i class="fa-solid fa-eye text-dark" style="font-size: 20px;"></i></a>
+                                        <a href="#"><i class="fa-solid fa-trash text-dark" style="font-size: 20px;"></i></a></td>
                                 </tr>
                                 <tr class="item">
-                                    <td>3</td>
                                     <td>Project-IT-6</td>
                                     <td>Norbert Baluya</td>
                                     <td>Preparation for Coding</td>
-                                    <td>03/07/2022</td>
                                     <td>DOC</td>
                                     <td>1.2 MB</td>
-                                    <td><a href="#"><i class="fa-solid fa-pen-to-square text-dark" style="font-size: 20px;"></i></a>
-                                        <a href="#"><i class="fa-solid fa-lock text-dark" style="font-size: 20px;"></i></a></td>
+                                    <td>03/07/2022</td>
+                                    <td><a href="#"><i class="fa-solid fa-eye text-dark" style="font-size: 20px;"></i></a>
+                                        <a href="#"><i class="fa-solid fa-trash text-dark" style="font-size: 20px;"></i></a></td>
                                 </tr>
                                 <tr class="item">
-                                    <td>4</td>
                                     <td>Project-IT-23</td>
                                     <td>Dave Pineda</td>
                                     <td>Group Meeting about Attendance Tracker</td>
-                                    <td>03/07/2022</td>
                                     <td>PDF</td>
                                     <td>1.0 MB</td>
-                                    <td><a href="#"><i class="fa-solid fa-pen-to-square text-dark" style="font-size: 20px;"></i></a>
-                                        <a href="#"><i class="fa-solid fa-unlock text-dark" style="font-size: 20px;"></i></a></td>
+                                    <td>03/07/2022</td>
+
+                                    <td><a href="#"><i class="fa-solid fa-eye text-dark" style="font-size: 20px;"></i></a>
+                                        <a href="#"><i class="fa-solid fa-trash text-dark" style="font-size: 20px;"></i></a></td>
                                 </tr>
                                 <tr class="item">
-                                    <td>5</td>
                                     <td>Project-IT-25</td>
                                     <td>Dennis Jacob</td>
                                     <td>Meeting with IT Team</td>
-                                    <td>03/06/2022</td>
                                     <td>ZIP</td>
                                     <td>2.5 MB</td>
-                                    <td><a href="#"><i class="fa-solid fa-pen-to-square text-dark" style="font-size: 20px;"></i></a>
-                                        <a href="#"><i class="fa-solid fa-unlock text-dark" style="font-size: 20px;"></i></a></td>
+                                    <td>03/06/2022</td>
+                                    <td><a href="#"><i class="fa-solid fa-eye text-dark" style="font-size: 20px;"></i></a>
+                                        <a href="#"><i class="fa-solid fa-trash text-dark" style="font-size: 20px;"></i></a></td>
                                 </tr>
                                 </tr>
                                 <tr class="item">
-                                    <td>6</td>
                                     <td>Project-IT-1</td>
                                     <td>Jansen Oribello</td>
                                     <td>Mockup for Project Proposal</td>
-                                    <td>03/03/2022</td>
                                     <td>PDF</td>
                                     <td>1.4 MB</td>
-                                    <td><a href="#"><i class="fa-solid fa-pen-to-square text-dark" style="font-size: 20px;"></i></a>
-                                        <a href="#"><i class="fa-solid fa-lock text-dark" style="font-size: 20px;"></i></a></td>
+                                    <td>03/03/2022</td>
+                                    <td><a href="#"><i class="fa-solid fa-eye text-dark" style="font-size: 20px;"></i></a>
+                                        <a href="#"><i class="fa-solid fa-trash text-dark" style="font-size: 20px;"></i></a></td>
                                 </tr>
                                 </tr>
                                 <tr class="item">
-                                    <td>7</td>
                                     <td>Project-IT-18</td>
-                                    <td>Ruffa Amparo</td>
+                                    <td>Ruffa Mae Amparo</td>
                                     <td>How to get a job Webinar</td>
-                                    <td>03/02/2022</td>
                                     <td>DOC</td>
                                     <td>0.9 MB</td>
-                                    <td><a href="#"><i class="fa-solid fa-pen-to-square text-dark" style="font-size: 20px;"></i></a>
-                                        <a href="#"><i class="fa-solid fa-lock text-dark" style="font-size: 20px;"></i></a></td>
+                                    <td>03/02/2022</td>
+                                    <td><a href="#"><i class="fa-solid fa-eye text-dark" style="font-size: 20px;"></i></a>
+                                        <a href="#"><i class="fa-solid fa-trash text-dark" style="font-size: 20px;"></i></a></td>
                                 </tr>
                                 </tr>
                                 <tr class="item">
-                                    <td>8</td>
                                     <td>Project-IT-10</td>
-                                    <td>Marc Morres</td>
+                                    <td>Marc Emil Mores</td>
                                     <td>Development of UIP Login Page</td>
-                                    <td>03/02/2022</td>
                                     <td>PDF</td>
                                     <td>1 MB</td>
-                                    <td><a href="#"><i class="fa-solid fa-pen-to-square text-dark" style="font-size: 20px;"></i></a>
-                                        <a href="#"><i class="fa-solid fa-unlock text-dark" style="font-size: 20px;"></i></a></td>
+                                    <td>03/02/2022</td>
+                                    <td><a href="#"><i class="fa-solid fa-eye text-dark" style="font-size: 20px;"></i></a>
+                                        <a href="#"><i class="fa-solid fa-trash text-dark" style="font-size: 20px;"></i></a></td>
                                 </tr>
                                 </tr>
                                 <tr class="item">
-                                    <td>9</td>
                                     <td>Project-IT-28</td>
                                     <td>Kylie Cuadra</td>
                                     <td>Creation of User Profile Page</td>
-                                    <td>03/01/2022</td>
                                     <td>PDF</td>
                                     <td>1.1 MB</td>
-                                    <td><a href="#"><i class="fa-solid fa-pen-to-square text-dark" style="font-size: 20px;"></i></a>
-                                        <a href="#"><i class="fa-solid fa-lock text-dark" style="font-size: 20px;"></i></a></td>
+                                    <td>03/01/2022</td>
+                                    <td><a href="#"><i class="fa-solid fa-eye text-dark" style="font-size: 20px;"></i></a>
+                                        <a href="#"><i class="fa-solid fa-trash text-dark" style="font-size: 20px;"></i></a></td>
                                 </tr>
                                 </tr>
                                 <tr class="item">
-                                    <td>10</td>
                                     <td>Project-IT-25</td>
                                     <td>Renz Anacay</td>
                                     <td>Mockups for Web-Based System</td>
-                                    <td>02/28/2022</td>
                                     <td>DOC</td>
                                     <td>0.8 MB</td>
-                                    <td><a href="#"><i class="fa-solid fa-pen-to-square text-dark" style="font-size: 20px;"></i></a>
-                                        <a href="#"><i class="fa-solid fa-unlock text-dark" style="font-size: 20px;"></i></a></td>
+                                    <td>02/28/2022</td>
+                                    <td><a href="#"><i class="fa-solid fa-eye text-dark" style="font-size: 20px;"></i></a>
+                                        <a href="#"><i class="fa-solid fa-trash text-dark" style="font-size: 20px;"></i></a></td>
                                 </tr>
                                 </tr>
                                 <tr class="item">
-                                    <td>11</td>
                                     <td>Project-IT-4</td>
                                     <td>Jericho Banaga</td>
                                     <td>Project Proposal Presentation to Core Team</td>
-                                    <td>02/28/2022</td>
                                     <td>DOC</td>
                                     <td>0.9 MB</td>
-                                    <td><a href="#"><i class="fa-solid fa-pen-to-square text-dark" style="font-size: 20px;"></i></a>
-                                        <a href="#"><i class="fa-solid fa-lock text-dark" style="font-size: 20px;"></i></a></td>
+                                    <td>02/28/2022</td>
+                                    <td><a href="#"><i class="fa-solid fa-eye text-dark" style="font-size: 20px;"></i></a>
+                                        <a href="#"><i class="fa-solid fa-trash text-dark" style="font-size: 20px;"></i></a></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -251,7 +240,6 @@
     <script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
     <!-- LOCAL JS -->
     <script type="text/javascript" src="../js/sidebar.js"></script>
-    <script type="text/javascript" src="piechart.js"></script>
     <script type="text/javascript" src="../js/graph.js"></script>
 </body>
 </html>
