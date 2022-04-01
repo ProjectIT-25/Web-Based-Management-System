@@ -1,6 +1,6 @@
 <?php
 
-$connections = mysqli_connect("localhost","root","jansen31","ojt");
+$connections = mysqli_connect("MYSQL5025.site4now.net","a84f52_ojt","Jansen31","db_a84f52_ojt");
 
         if($connections){
              echo "";
@@ -10,3 +10,4 @@ $connections = mysqli_connect("localhost","root","jansen31","ojt");
 ?>
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
