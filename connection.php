@@ -1,5 +1,6 @@
 <?php
-    $connections = mysqli_connect("sql6.freesqldatabase.com","sql6481165","NN9KcqfkE3","sql6481165");
+
+$connections = mysqli_connect("localhost","root","jansen31","ojt");
 
         if($connections){
              echo "";
