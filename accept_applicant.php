@@ -20,16 +20,50 @@ if (isset($_GET['applicantID'])) {
 
 	if ($userLvl == 0) {
 		mysqli_query($connections, $admin);
-		echo "<script>alert('".$name." is registered as Admin!');</script>";
-		mysqli_query($connections, "DELETE FROM pending_request_tbl WHERE id=$id");
-		echo '<script>window.location.href="sendmail.php?email='.$email.'&password='.$password.'&fname='.$fname.'";</script>';
+		#TOAST ALERT STARTS HERE#
+		echo '
+		<script type="text/javascript">setTimeout(function () { 
+			const Toast = Swal.mixin({
+				toast: true,
+				position: "top-end",
+				showConfirmButton: false,
+				timer: 10000,
+				timerProgressBar: true,
+				})
+				Toast.fire({
+					icon: "success",
+					title: "'.$name.'is successfully registered as Admin!"
+
+					}); 
+					},100)</script>;
+
+					<script>window.location.href="sendmail.php?email='.$email.'&password='.$password.'&fname='.$fname.'";</script>';
+
+					mysqli_query($connections, "DELETE FROM pending_request_tbl WHERE id=$id");
 
 	}
 	else{
 		mysqli_query($connections, $intern);
-		echo "<script>alert('".$name." is registered as Intern!');</script>";
-		mysqli_query($connections, "DELETE FROM pending_request_tbl WHERE id=$id");
-		echo '<script>window.location.href="sendmail.php?email='.$email.'&password='.$password.'&fname='.$fname.'";</script>';
+		#TOAST ALERT STARTS HERE#
+		echo '
+		<script type="text/javascript">setTimeout(function () { 
+			const Toast = Swal.mixin({
+				toast: true,
+				position: "top-end",
+				showConfirmButton: false,
+				timer: 10000,
+				timerProgressBar: true,
+				})
+				Toast.fire({
+					icon: "success",
+					title: "'.$name.'is successfully registered as Intern!"
+
+					}); 
+					},100)</script>;
+
+					<script>window.location.href="sendmail.php?email='.$email.'&password='.$password.'&fname='.$fname.'";</script>';
+
+					mysqli_query($connections, "DELETE FROM pending_request_tbl WHERE id=$id");
 
 	}
 
@@ -37,18 +71,4 @@ if (isset($_GET['applicantID'])) {
 }
 ?>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

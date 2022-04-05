@@ -4,8 +4,6 @@ include ("connection.php");
   $email=$_GET['email'];
   $password=$_GET['password'];
   $fname=$_GET['fname'];
-
-
   require 'sendmail/vendor/autoload.php';
   use \Mailjet\Resources;
   $mj = new \Mailjet\Client('5a2d7d67ea2951cde296436e8e58f739','64faad233ff131053131226ae530b5a7',true,['version' => 'v3.1']);
@@ -14,8 +12,7 @@ include ("connection.php");
       [
         'From' => [
           'Email' => "departmentmcc@gmail.com",
-          'Name' => "MCC Department",
-          'Reply-To' => "no-reply@departmentmcc.com"
+          'Name' => "MCC Department"
         ],
         'To' => [
           [
