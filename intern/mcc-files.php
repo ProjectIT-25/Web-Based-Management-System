@@ -1,7 +1,7 @@
 <?php 
 include("../connection.php");
-   
-        ?>
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,138 +40,161 @@ include("../connection.php");
             </li>
             <li>
                 <a href="recycle-bin-dashboard.php">
-                 <i class="fa-solid fa-trash"></i>
-                 <span class="link-name">Recycle Bin</span>
-             </a>
-         </li>
-         <li>
-            <a href="#">
-             <i class='bx bx-log-out'></i>
-             <span class="link-name">Logout</span>
-         </a>
-     </li>
- </ul>
-</div>
-<!-- Main Content -->
-<section class="home-section">
-  <nav class="">
-   <div class="sidebar-button">
-    <span class="dashboard">INTERN DASHBOARD</span>
-</div>
-            <!-- <div class="search-box">
-                <input type="text" name="" placeholder="Search">
-                <i class='bx bx-search'></i>
-            </div> -->
-            <div class="d-flex justify-content-center align-items-center">
-                <span class="name">Intern</span>
-            </div>
-        </nav>
-
-        <div class="container-fluid px-4">
-            <div class="row g3 my-3">
-                <div class="col-md-6 overview">
-                   <a href="announcement.php">
-                    <div class="p-3 shadow-sm d-flex justify-content-around align-items-center rounded" style="background-color: #6990F2; padding: 36px !important;">
-                        <div>
-                            <h3 class="fs-2 text-white">ANNOUNCEMENT AND EVENTS</h3>
-                        </div>
-                    </div>
+                    <i class="fa-solid fa-trash"></i>
+                    <span class="link-name">Recycle Bin</span>
                 </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-log-out'></i>
+                    <span class="link-name">Logout</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- Main Content -->
+    <section class="home-section">
+        <nav class="">
+            <div class="sidebar-button">
+                <span class="dashboard">INTERN DASHBOARD</span>
             </div>
-            <div class="col-md-6 overview">
-                <div class="shadow-sm d-flex justify-content-around align-items-center rounded">
-                    <div class="wrapper" style="height: 117px;">
-                        <form method="post" enctype="multipart/form-data">
-                            <input type="file" name="file" id="files">
-                            <button type="submit" name="upload">UPLOAD</button>
-                        </form>
-                    </div>    
+<!-- <div class="search-box">
+<input type="text" name="" placeholder="Search">
+<i class='bx bx-search'></i>
+</div> -->
+<div class="d-flex justify-content-center align-items-center">
+    <span class="name">Intern</span>
+</div>
+</nav>
+
+<div class="container-fluid px-4">
+    <div class="row g3 my-3">
+        <div class="col-md-6 overview">
+            <a href="announcement.php">
+                <div class="p-3 shadow-sm d-flex justify-content-around align-items-center rounded" style="background-color: #6990F2; padding: 36px !important;">
+                    <div>
+                        <h3 class="fs-2 text-white">ANNOUNCEMENT AND EVENTS</h3>
+                    </div>
                 </div>
+            </a>
+        </div>
+        <div class="col-md-6 overview">
+            <div class="shadow-sm d-flex justify-content-around align-items-center rounded">
+                <div class="wrapper" style="height: 117px;">
+                    <form method="post" enctype="multipart/form-data">
+                        <input type="file" name="file" id="files">
+                        <button type="submit" name="upload">UPLOAD</button>
+                    </form>
+                </div>    
             </div>
         </div>
     </div>
-    <!-- SEARCH FILE FUNCTION -->
-    <div class="attendance-tab-header px-4">
-        <div class="row">
-            <div class="col-md-6">
-                <input type="date">
-            </div> 
-            <div class="col-md-6 d-flex justify-content-end">
-                <input type="text" id="Search" onkeyup = "tblFunction()" placeholder = "Search">
-            </div>
+</div>
+<!-- SEARCH FILE FUNCTION -->
+<div class="attendance-tab-header px-4">
+    <div class="row">
+        <div class="col-md-6">
+            <input type="date">
+        </div> 
+        <div class="col-md-6 d-flex justify-content-end">
+            <input type="text" id="Search" onkeyup = "tblFunction()" placeholder = "Search">
         </div>
     </div>
-    <!-- TABLE -->
-    <div class="col documents-table">
-        <table class='table sortable table-responsive-md table-bordered bg-white rounded shadow-sm  table-striped text-center' id="Table">
+</div>
+<!-- TABLE -->
+<div class="col documents-table">
+    <table class='table sortable table-responsive-md table-bordered bg-white rounded shadow-sm  table-striped text-center' id="Table">
 
-            <thead class='thead-color' style='position: sticky; top: 0;'>
-                <tr>
-                    <th>File Name</th>
-                    <th>File Type</th>
-                    <th>File Size</th>
-                    <th>Last Date Modified</th> 
+        <thead class='thead-color' style='position: sticky; top: 0;'>
+            <tr>
+                <th>File Name</th>
+                <th>File Type</th>
+                <th>File Size</th>
+                <th>Last Date Modified</th> 
 
-                    <th style="pointer-events: none;">Action</th>
+                <th style="pointer-events: none;">Action</th>
 
-                </tr>
-            </thead>
-            <tbody>
+            </tr>
+        </thead>
+        <tbody>
 
-                <?php
-                function formatSizeUnits($bytes) { 
-                    if ($bytes >= 1024) {
-                        $bytes = number_format($bytes / 1024, 2) . ' MB'; 
-                    } elseif ($bytes >= 0) {
-                        $bytes = number_format($bytes, 2) . ' KB'; 
-                    } else { 
-                        $bytes = '0 bytes';
-                    } return $bytes; 
+            <?php
+            // DATA LIMIT SET TO 10
+            $limit = 10;  
+            if (isset($_GET["page"])) {
+                $page  = $_GET["page"]; 
+            } 
+            else{ 
+                $page=1;
+            };  
+            $start_from = ($page-1) * $limit; 
+
+            function formatSizeUnits($bytes) { 
+                if ($bytes >= 1024) {
+                    $bytes = number_format($bytes / 1024, 2) . ' MB'; 
+                } elseif ($bytes >= 0) {
+                    $bytes = number_format($bytes, 2) . ' KB'; 
+                } else { 
+                    $bytes = '0 bytes';
+                } return $bytes; 
+            }
+
+            $result = mysqli_query($connections, "SELECT * FROM filetbl");
+            if ($result) {
+                while ($row = mysqli_fetch_assoc($result)){
+                    $File_ID = $row['File_ID'];
+                    $FileName = $row['FileName'];
+                    $FileType = $row['FileType'];
+                    $FileSize = $row['FileSize'];
+                    $LastModified = $row['LastModified'];
+                    $expiration_date = $row['Expiration'];
+
+
+                    echo ' <tr>
+                    <td> '.$FileName.' </td>
+                    <td> '.$FileType.' </td>
+                    <td> '.formatSizeUnits($FileSize).' </td>
+                    <td> '.$LastModified.' </td>
+                    <td class="mx-auto d-flex justify-content-around"><a href="#"><i class="fa-solid fa-eye text-dark" style="font-size: 20px;"></i></a>
+                    <a onclick="javascript:confirmationDelete($(this));return false;" href="../delete.php?deleteid='.$File_ID.'"><i class="fa-solid fa-trash text-dark" style="font-size: 20px;"></i></a></td>
+                    </tr> ';
                 }
 
-                $result = mysqli_query($connections, "SELECT * FROM filetbl");
-                if ($result) {
-                    while ($row = mysqli_fetch_assoc($result)){
-                        $File_ID = $row['File_ID'];
-                        $FileName = $row['FileName'];
-                        $FileType = $row['FileType'];
-                        $FileSize = $row['FileSize'];
-                        $LastModified = $row['LastModified'];
-                        $expiration_date = $row['Expiration'];
-                        
+            }
+            ?>
+            <!-- DELETE CONFIRMATION SCRIPT START -->
+            <script type="text/javascript">
+                function confirmationDelete(anchor)
+                {
+                    var conf = confirm('Are you sure want to delete this file?');
+                    if(conf)
+                        window.location=anchor.attr("href");
+                }
 
-                        echo ' <tr>
-                        <td> '.$FileName.' </td>
-                        <td> '.$FileType.' </td>
-                        <td> '.formatSizeUnits($FileSize).' </td>
-                        <td> '.$LastModified.' </td>
-                        <td class="mx-auto d-flex justify-content-around"><a href="#"><i class="fa-solid fa-eye text-dark" style="font-size: 20px;"></i></a>
-                        <a onclick="javascript:confirmationDelete($(this));return false;" href="../delete.php?deleteid='.$File_ID.'"><i class="fa-solid fa-trash text-dark" style="font-size: 20px;"></i></a></td>
-                        </tr> ';
-
-                        // DELETE IF FILE EXPIRED
-                        $dateToday = date('Y-m-d H:i:s');
-                        if($dateToday >= $expiration_date){
-                            mysqli_query($connections, "DELETE FROM recycletbl WHERE Expiration = '".$dateToday."'");
-                        }
-
-                    }
-
-        }
+            </script>
+            <!-- DELETE CONFIRMATION SCRIPT END -->
+        </tbody>
+    </table>
+    <!-- PAGINATION START -->
+    <div class="page d-flex justify-content-around"> <!-- AYAW GUMANA -->
+        <?php
+        $result_db = mysqli_query($connections,"SELECT COUNT(*) FROM filetbl"); 
+        $row_db = mysqli_fetch_row($result_db);  
+        $total_records = $row_db[0];  
+        $total_pages = ceil($total_records / $limit); 
+        /* echo  $total_pages; */
         ?>
-        <!-- DELETE CONFIRMATION SCRIPT START -->
-        <script type="text/javascript">
-            function confirmationDelete(anchor)
-            {
-             var conf = confirm('Are you sure want to delete this file?');
-             if(conf)
-              window.location=anchor.attr("href");
-      }
+        <strong>Page <?php echo $page." of ".$total_pages; ?></strong>
+        <?php
+        $pagLink = "<ul class='pagination'>";  
+        for ($i=1; $i<=$total_pages; $i++) {
+            $pagLink .= "<li class='page-item'><a class='page-link' href='pending-accounts.php?page=".$i."'>".$i."</a></li>";   
+        }
+        echo $pagLink . "</ul>";  
 
-  </script>
-  <!-- DELETE CONFIRMATION SCRIPT END -->
-</tbody>
-</table>
+        ?>
+    </div>
+    <!-- PAGINATION END -->
 </div>
 </div>
 </section>
@@ -224,16 +247,16 @@ if(isset($_POST['upload']))
     else{
         $file_type = strtoupper($extension);
     }
-    
+
     /* new file size in KB */
     $new_size = $file_size/1024;  
     /* new file size in KB */
-    
+
     if(move_uploaded_file($file_loc,$folder.$file))
     {
         $sql="INSERT INTO filetbl(FileName,FileType,FileSize, LastModified, Expiration) VALUES('$file','$file_type','$new_size', '$LastModified', '$expiration')";
         mysqli_query($connections,$sql);
-        
+
         echo "<script>window.location.href='mcc-files.php';
         alert('File Uploaded Successfully');</script>";
     }

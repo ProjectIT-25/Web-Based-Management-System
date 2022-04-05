@@ -10,6 +10,7 @@
 body{
 	min-height: 100vh;
 	width: 100%;
+	overflow-y: hidden;
 }
 
 .sidebar{
@@ -114,10 +115,6 @@ body{
 	left: 180px;
 }
 
-.sidebar.active ~ .home-section .event-panel{
-	padding: 78px 0 !important;
-} 
-
 .home-section nav{
 	position: fixed;
 	width: calc(100% - 60px);
@@ -194,22 +191,6 @@ body{
     color: inherit;
 }
 
-.event-panel{
-	background-color: #4682B4;
-	margin:  18px;
-	padding: 115px !important;
-}
-
-.overview .pending-account{
-  background-color: #6A757A; 
-  margin: 18px;
-  height: 215px;
-}
-
-.overview .pending-account p{
-  font-size: 24px;
-}
-
 .overview .shadow-sm{
 	box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
@@ -235,22 +216,6 @@ body{
     border-radius: 5px;
     border: 2px dashed #fff;
 }
-
-.wrapper input{
-	color: #fff;
-}
-
-.wrapper button{
-	width: 50%;
-	background: #373d3f;
-	border: none;
-	color: #fff;
-	font-weight: 500;
-	border-radius: 10px;
-	margin-top: 2px;
-	letter-spacing: 2px;
-}
-
 form :where(i, p){
     color: #fff;
 }
@@ -360,6 +325,20 @@ th {
 }
 
 /* The Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .modal-header {
   padding: 2px 16px;
   background-color: #00243e;
@@ -382,9 +361,7 @@ th {
   border-radius: 15px;
 }
 
-.button:hover {
-  background-color: #6495ED;
-}
+.button:hover {background-color: #6495ED}
 
 .button:active {
   background-color: #3e8e41;
@@ -397,6 +374,11 @@ th {
   color: white;
 }
 
+table {
+  border: 2px dashed #cccccc;
+  border-collapse: collapse;
+  width: 80%;
+}
 
 /*FOOTER*/
 footer{
@@ -410,26 +392,32 @@ footer{
 	z-index: 1;
 }
 
-/*MEDIA QUERIES*/
-@media (min-width: 320px) and (max-width: 480px) {
+
+
+
+@media (min-width: 481px) and (max-width: 767px) {
+
+	body{
+        overflow: scroll;
+    }
+
     .sidebar.active{
         position: fixed;
         top: 0;
-        height: 100%;
+        height: 100vh;
         width: 100%;
         background: #00243e;
         z-index: 2;
-        overflow: hidden;
     }
 
-    .sidebar.active ~ .home-section .name,
-    .sidebar.active ~ .home-section .dashboard {
+    .sidebar.active ~ .home-section .name {
         display: none;
     }
 
+    .sidebar .menu-details .menu-name,
     .home-section .dashboard,
     .home-section div .name{
-        font-size: 14px;
+        font-size: 18px;
     }
 
     .sidebar.active ~ .home-section{
@@ -437,76 +425,26 @@ footer{
         left: 60px;
     }
 
-    .event-panel{
-    	height: 5px;
-    	padding: 50px 0 !important;
-    }
-
-  	.event-panel .fs-2{
-  		font-size: 14px;
-  	}
-
-  	.attendance-tab-header input{
-  		width: 70%;
-  	}
-
-  	.documents-table{
-  		font-size: 14px;
-  		height: 600px;
-  	}
 }
 
-@media (min-width: 481px) and (max-width: 767px) {
-    .event-panel{
-    	height: 5px;
-    	padding: 70px 0 !important;
-    }
+@media (min-width: 320px) and (max-width: 480px) {
 
-    .event-panel .fs-2{
-  		font-size: 18px;
-  	}
-	
+	body{
+        overflow: scroll;
+    }
 
     .sidebar.active{
         position: fixed;
         top: 0;
         height: 100vh;
+        width: 100%;
         background: #00243e;
         z-index: 2;
     }
 
-    .sidebar .menu-details .menu-name,
-    .home-section .dashboard,
-    .home-section div .name{
-        font-size: 18px;
+    .sidebar.active ~ .home-section .name {
+        display: none;
     }
-
-    .documents-table{
-  		font-size: 14px;
-  		height: 600px;
-  	}
-
-}
-
-@media (min-width: 768px) and (max-width: 1024px){
-	body{
-		width: 100%;
-	}
-	.event-panel{
-    	height: 5px;
-    	padding: 70px 0 !important;
-    }
-
-    .event-panel .fs-2{
-  		font-size: 20px;
-  	}
-
-  	.sidebar{
-  		height: 100%;
-  	}
-  	.home-section{
-  		overflow-x: hidden;
-  	}
 
     .sidebar .menu-details .menu-name,
     .home-section .dashboard,
@@ -514,29 +452,9 @@ footer{
         font-size: 18px;
     }
 
-    .sidebar.active ~ .home-section #myChart{
-    	margin-top: 30px;
-    	width: 256px;
+    .sidebar.active ~ .home-section{
+        width: calc(100% - 60px);
+        left: 60px;
     }
 
-    .attendance-tab-header{
-    	position: relative;
-    	left: 50%;
-    }
-
-    .attendance-tab-header input{
-    	width: 80%;
-    }
-
-    .documents-table{
-  		font-size: 20px;
-  		height: 600px;
-  	}
-	
-}
-
-@media (min-width: 1025px){
-	.event-panel{
-		padding: 80px 0 !important;
-	}
 }

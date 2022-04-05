@@ -1,3 +1,6 @@
+<?php 
+include("../connection.php");
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +16,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- LOCAL CSS -->
     <link rel="stylesheet" type="text/css" href="../css/a-filesdashboard.css">
-  
+
 
 </head>
 <body>
@@ -24,14 +27,14 @@
         </div>
         <ul class="nav-links">
             <li>
-                <a href="#">
+                <a href="mcc-files.php">
                     <i class= "bx bx-grid-alt text-white"></i>
                     <span class="link-name text-white">Home</span>
                 </a>
             </li>
-                <li>
+            <li>
                 <a href="announcement.php">
-                        <i class="fa-solid fa-bullhorn"></i> 
+                    <i class="fa-solid fa-bullhorn"></i> 
                     <span class="link-name">Announcements</span>
                 </a>
             </li>
@@ -67,169 +70,147 @@
         <div class="container-fluid px-4">
             <div class="row g3 my-3">
                 <div class="col-md-6 overview">
-            <a href="announcement.php">
+                    <a href="announcement.php">
                         <div class="p-3 shadow-sm d-flex justify-content-around align-items-center rounded" style="background-color: #4682B4; margin:  18px;padding: 115px !important;">
                             <div>
                                 <h1 class="fs-2 text-white">TODAY'S EVENT</h3>
+                                </div>
                             </div>
-                        </div>
-            </a>
+                        </a>
                     </div>
-               
-           <div class="col-md-6 overview">
-           <canvas id="myChart" style="height:50px;max-width:650px"></canvas>
-            </div>
-         </div>
-        </div>
-        <!-- ATTENDANCE REPORT -->
-        <div class="attendance-tab-header px-4">
-            <div class="row">
-                <div class="col-md-6">
-                    <input type="text" name="" placeholder="Search">
-                    <button>Search</button>
-                </div> 
-            </div>
-        </div>
-        <div class="col documents-table">
-                        <table class="table sortable table-responsive-md table-bordered bg-white rounded shadow-sm  table-striped text-center">
-                            <thead class="thead-color" style="position: sticky; top: 0;">
-                                <tr>
-                                    <th scope="col">Team</th>
-                                    <th scope="col">File Owner</th>
-                                    <th scope="col">File Name</th>
-                                    <th scope="col">File Type</th>
-                                    <th scope="col">File Size</th>
-                                    <th scope="col">Last Date Modified</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="item">
-                                    <td>Project-IT-12</td>
-                                    <td>Julienne Pineda</td>
-                                    <td>Brainstorming about Project Proposal</td>
-                                    <td>PDF</td>     
-                                    <td>0.9 MB</td>                              
-                                    <td>03/09/2022</td>
-                                    <td><a href="#"><i class="fa-solid fa-eye text-dark" style="font-size: 20px; "></i></a>
-                                        <a href="#"><i class="fa-solid fa-trash text-dark" style="font-size: 20px;"></i></a></td>
-                                </tr>
-                                <tr class="item">
-                                    <td>Project-IT-32</td>
-                                    <td>Clarisse Berondo</td>
-                                    <td>Progress Report Meeting Presentation</td>
-                                    <td>PDF</td>
-                                    <td>2.0 MB</td>
-                                    <td>03/08/2022</td>
-                                    <td><a href="#"><i class="fa-solid fa-eye text-dark" style="font-size: 20px;"></i></a>
-                                        <a href="#"><i class="fa-solid fa-trash text-dark" style="font-size: 20px;"></i></a></td>
-                                </tr>
-                                <tr class="item">
-                                    <td>Project-IT-6</td>
-                                    <td>Norbert Baluya</td>
-                                    <td>Preparation for Coding</td>
-                                    <td>DOC</td>
-                                    <td>1.2 MB</td>
-                                    <td>03/07/2022</td>
-                                    <td><a href="#"><i class="fa-solid fa-eye text-dark" style="font-size: 20px;"></i></a>
-                                        <a href="#"><i class="fa-solid fa-trash text-dark" style="font-size: 20px;"></i></a></td>
-                                </tr>
-                                <tr class="item">
-                                    <td>Project-IT-23</td>
-                                    <td>Dave Pineda</td>
-                                    <td>Group Meeting about Attendance Tracker</td>
-                                    <td>PDF</td>
-                                    <td>1.0 MB</td>
-                                    <td>03/07/2022</td>
 
-                                    <td><a href="#"><i class="fa-solid fa-eye text-dark" style="font-size: 20px;"></i></a>
-                                        <a href="#"><i class="fa-solid fa-trash text-dark" style="font-size: 20px;"></i></a></td>
-                                </tr>
-                                <tr class="item">
-                                    <td>Project-IT-25</td>
-                                    <td>Dennis Jacob</td>
-                                    <td>Meeting with IT Team</td>
-                                    <td>ZIP</td>
-                                    <td>2.5 MB</td>
-                                    <td>03/06/2022</td>
-                                    <td><a href="#"><i class="fa-solid fa-eye text-dark" style="font-size: 20px;"></i></a>
-                                        <a href="#"><i class="fa-solid fa-trash text-dark" style="font-size: 20px;"></i></a></td>
-                                </tr>
-                                </tr>
-                                <tr class="item">
-                                    <td>Project-IT-1</td>
-                                    <td>Jansen Oribello</td>
-                                    <td>Mockup for Project Proposal</td>
-                                    <td>PDF</td>
-                                    <td>1.4 MB</td>
-                                    <td>03/03/2022</td>
-                                    <td><a href="#"><i class="fa-solid fa-eye text-dark" style="font-size: 20px;"></i></a>
-                                        <a href="#"><i class="fa-solid fa-trash text-dark" style="font-size: 20px;"></i></a></td>
-                                </tr>
-                                </tr>
-                                <tr class="item">
-                                    <td>Project-IT-18</td>
-                                    <td>Ruffa Mae Amparo</td>
-                                    <td>How to get a job Webinar</td>
-                                    <td>DOC</td>
-                                    <td>0.9 MB</td>
-                                    <td>03/02/2022</td>
-                                    <td><a href="#"><i class="fa-solid fa-eye text-dark" style="font-size: 20px;"></i></a>
-                                        <a href="#"><i class="fa-solid fa-trash text-dark" style="font-size: 20px;"></i></a></td>
-                                </tr>
-                                </tr>
-                                <tr class="item">
-                                    <td>Project-IT-10</td>
-                                    <td>Marc Emil Mores</td>
-                                    <td>Development of UIP Login Page</td>
-                                    <td>PDF</td>
-                                    <td>1 MB</td>
-                                    <td>03/02/2022</td>
-                                    <td><a href="#"><i class="fa-solid fa-eye text-dark" style="font-size: 20px;"></i></a>
-                                        <a href="#"><i class="fa-solid fa-trash text-dark" style="font-size: 20px;"></i></a></td>
-                                </tr>
-                                </tr>
-                                <tr class="item">
-                                    <td>Project-IT-28</td>
-                                    <td>Kylie Cuadra</td>
-                                    <td>Creation of User Profile Page</td>
-                                    <td>PDF</td>
-                                    <td>1.1 MB</td>
-                                    <td>03/01/2022</td>
-                                    <td><a href="#"><i class="fa-solid fa-eye text-dark" style="font-size: 20px;"></i></a>
-                                        <a href="#"><i class="fa-solid fa-trash text-dark" style="font-size: 20px;"></i></a></td>
-                                </tr>
-                                </tr>
-                                <tr class="item">
-                                    <td>Project-IT-25</td>
-                                    <td>Renz Anacay</td>
-                                    <td>Mockups for Web-Based System</td>
-                                    <td>DOC</td>
-                                    <td>0.8 MB</td>
-                                    <td>02/28/2022</td>
-                                    <td><a href="#"><i class="fa-solid fa-eye text-dark" style="font-size: 20px;"></i></a>
-                                        <a href="#"><i class="fa-solid fa-trash text-dark" style="font-size: 20px;"></i></a></td>
-                                </tr>
-                                </tr>
-                                <tr class="item">
-                                    <td>Project-IT-4</td>
-                                    <td>Jericho Banaga</td>
-                                    <td>Project Proposal Presentation to Core Team</td>
-                                    <td>DOC</td>
-                                    <td>0.9 MB</td>
-                                    <td>02/28/2022</td>
-                                    <td><a href="#"><i class="fa-solid fa-eye text-dark" style="font-size: 20px;"></i></a>
-                                        <a href="#"><i class="fa-solid fa-trash text-dark" style="font-size: 20px;"></i></a></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="col-md-6 overview">
+                     <a href="pending-accounts.php">
+                        <div class="pending-account p-3 shadow-sm d-flex justify-content-around align-items-center rounded text-white" style="background-color: #6A757A; 
+                        margin: 18px;
+                        height: 285px;">
+                        <div>
+                            <h1>42069</h1>
+                            <p>Pending Accounts</p>
+                        </div>
+                        <i class="fa-solid fa-user-clock text-white p-3" style="font-size: 40px;"></i>
                     </div>
-                </div>
-    </section>
-    <footer>&copy; Copyright 2022 - Project-IT-25 - Melham Construction Interns</footer>
-    <!-- CHART JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js">
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- ATTENDANCE REPORT -->
+    <div class="attendance-tab-header px-4">
+        <div class="row">
+            <div class="col-md-6">
+                <input type="text" name="" placeholder="Search">
+                <button>Search</button>
+            </div> 
+        </div>
+    </div>
+    <div class="col documents-table">
+        <table class="table sortable table-responsive-md table-bordered bg-white rounded shadow-sm  table-striped text-center">
+            <thead class="thead-color" style="position: sticky; top: 0;">
+                <tr>
+                    <th scope="col">Owner Email</th>
+                    <th scope="col">Team</th>
+                    <th scope="col">File Name</th>
+                    <th scope="col">File Type</th>
+                    <th scope="col">File Size</th>
+                    <th scope="col">Last Date Modified</th>
+                    <th scope="col" style="pointer-events: none">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                // DATA LIMIT SET TO 10
+                $limit = 10;  
+                if (isset($_GET["page"])) {
+                    $page  = $_GET["page"]; 
+                } 
+                else{ 
+                    $page=1;
+                };  
+                $start_from = ($page-1) * $limit;  
+
+                function formatSizeUnits($bytes) { 
+                    if ($bytes >= 1024) {
+                        $bytes = number_format($bytes / 1024, 2) . ' MB'; 
+                    } elseif ($bytes >= 0) {
+                        $bytes = number_format($bytes, 2) . ' KB'; 
+                    } else { 
+                        $bytes = '0 bytes';
+                    } return $bytes; 
+                }
+
+                $result = mysqli_query($connections, "SELECT * FROM filetbl");
+                if ($result) {
+                    while ($row = mysqli_fetch_assoc($result)){
+                        $File_ID = $row['File_ID'];
+                        $email = $row['Email'];
+                        $department = $row['Department'];
+                        $FileName = $row['FileName'];
+                        $FileType = $row['FileType'];
+                        $FileSize = $row['FileSize'];
+                        $LastModified = $row['LastModified'];
+                        $expiration_date = $row['Expiration'];
+
+
+                        echo ' <tr>
+                        <td> '.$email.' </td>
+                        <td> '.$department.' </td>
+                        <td> '.$FileName.' </td>
+                        <td> '.$FileType.' </td>
+                        <td> '.formatSizeUnits($FileSize).' </td>
+                        <td> '.$LastModified.' </td>
+                        <td class="mx-auto d-flex justify-content-around"><a href="#"><i class="fa-solid fa-eye text-dark" style="font-size: 20px;"></i></a>
+                        <a onclick="javascript:confirmationDelete($(this));return false;" href="../delete.php?deleteid='.$File_ID.'"><i class="fa-solid fa-trash text-dark" style="font-size: 20px;"></i></a></td>
+                        </tr> ';
+
+                        // DELETE IF FILE EXPIRED
+                        $dateToday = date('Y-m-d H:i:s');
+                        if($dateToday >= $expiration_date){
+                            mysqli_query($connections, "DELETE FROM recycletbl WHERE Expiration = '".$dateToday."'");
+                        }
+
+                    }
+
+                }
+                ?>
+                <!-- DELETE CONFIRMATION SCRIPT START -->
+                <script type="text/javascript">
+                    function confirmationDelete(anchor)
+                    {
+                       var conf = confirm('Are you sure want to delete this file?');
+                       if(conf)
+                          window.location=anchor.attr("href");
+                  }
+              </script>
+              <!-- DELETE CONFIRMATION SCRIPT END -->
+          </tbody>
+      </table>
+      <!-- PAGINATION START -->
+       <div class="page d-flex justify-content-around"> <!-- AYAW GUMANA -->
+                <?php
+                $result_db = mysqli_query($connections,"SELECT COUNT(*) FROM filetbl"); 
+                $row_db = mysqli_fetch_row($result_db);  
+                $total_records = $row_db[0];  
+                $total_pages = ceil($total_records / $limit); 
+                /* echo  $total_pages; */
+                ?>
+                <strong>Page <?php echo $page." of ".$total_pages; ?></strong>
+                <?php
+                $pagLink = "<ul class='pagination'>";  
+                for ($i=1; $i<=$total_pages; $i++) {
+                  $pagLink .= "<li class='page-item'><a class='page-link' href='pending-accounts.php?page=".$i."'>".$i."</a></li>";   
+              }
+              echo $pagLink . "</ul>";  
+
+              ?>
+            </div>
+            <!-- PAGINATION END -->
+  </div>
+</div>
+</section>
+<footer>&copy; Copyright 2022 - Project-IT-25 - Melham Construction Interns</footer>
+<!-- CHART JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>

@@ -113,7 +113,7 @@
 							<textarea class="form-control" name="compose-announcement" placeholder="Description"></textarea>
 						</div>
 						<div class="modal-footer">
-							<select class="mr-auto" style="width: 30%;">
+							<select class="mr-auto" name="team" style="width: 30%;">
 								<option disabled selected>Select a team</option>
     							<option value="">Project-IT-25</option>
 							</select>

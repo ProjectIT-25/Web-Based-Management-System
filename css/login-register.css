@@ -140,10 +140,10 @@ button+button{
 	left: -50%;
 }
 
-#register select:nth-child(3){
+#register input:nth-child(3){
 	width: 50%;
 	position: absolute;
-	top: 42%;
+	top: 38%;
 	left: 10%;
 }
 

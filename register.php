@@ -14,6 +14,8 @@ if(isset($_REQUEST['register'])){
 	$password = mysqli_real_escape_string($connections, $_POST['password']);
 	$cpassword = mysqli_real_escape_string($connections, $_POST['cpassword']);
 
+	$team = strtoupper($team);
+
 	$query = "INSERT INTO pending_request_tbl VALUES ('', '$appNumber', '$team', '$userLvl','$fname', '$mname', '$lname', '$suffix', '$email', '$password')";
 
 

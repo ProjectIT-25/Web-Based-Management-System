@@ -139,16 +139,13 @@ if($email && $password){
 			<form id="register" class="input-group" method="post" action="register.php">
 				<p>Create an Account</p>
 				<input type="text" class="input-field" placeholder="Application Number" name="appNumber" required autofocus></input>
-				<select name="team" required>
-					<option value="" disabled selected>Choose team</option>
-					<option value="MCC IT Course">MCC IT Course</option>
-				</select>
+				<input type="text" class="input-field" placeholder="Enter Team" name="team" required>
 				<select name="userLvl" required>
 					<option value="" disabled selected>Choose User Level</option>
 					<option value="0">Admin</option>
 					<option value="1">Intern</option>
 				</select>
-				<input type="text" class="input-field" placeholder="First Name" name="fname" required autofocus></input>
+				<input type="text" class="input-field" placeholder="First Name" name="fname" required></input>
 				<input type="text" class="input-field" placeholder="Middle Name" name="mname" required></input>
 				<input type="text" class="input-field" placeholder="Last Name" name="lname" required></input>
 				<input type="text" class="input-field" placeholder="Suffix"name="suffix"></input>

@@ -10,4 +10,3 @@ $connections = mysqli_connect("MYSQL5025.site4now.net","a84f52_ojt","Jansen31","
 ?>
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
