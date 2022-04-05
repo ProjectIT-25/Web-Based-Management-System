@@ -14,6 +14,9 @@ include ("connection.php");
           'Email' => "departmentmcc@gmail.com",
           'Name' => "MCC Department"
         ],
+        'ReplyTo' => [
+          'Email' => 'no-reply@departmentmcc.com'
+        ],
         'To' => [
           [
             'Email' => $email
