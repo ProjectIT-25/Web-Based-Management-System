@@ -45,7 +45,7 @@ include("../connection.php");
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="../index.html">
                     <i class='bx bx-log-out'></i>
                     <span class="link-name">Logout</span>
                 </a>

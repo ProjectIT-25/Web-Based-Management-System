@@ -45,7 +45,7 @@ include("../connection.php");
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="../index.html">
                     <i class='bx bx-log-out'></i>
                     <span class="link-name">Logout</span>
                 </a>
@@ -85,7 +85,16 @@ include("../connection.php");
                         margin: 18px;
                         height: 285px;">
                         <div>
-                            <h1>42069</h1>
+
+                        <!--COUNT ALL THE FILES OF PENDING ACCOUNTS-->
+                        <?php
+                        $result = mysqli_query($connections, "SELECT COUNT(1) FROM pending_request_tbl");
+                        $row = mysqli_fetch_array($result);
+
+                        $total = $row [0];
+                        echo ' <h3 class="fs-2"> '.$total.' </h3>'
+
+                        ?>
                             <p>Pending Accounts</p>
                         </div>
                         <i class="fa-solid fa-user-clock text-white p-3" style="font-size: 40px;"></i>
@@ -143,7 +152,7 @@ include("../connection.php");
                     while ($row = mysqli_fetch_assoc($result)){
                         $File_ID = $row['File_ID'];
                         $email = $row['Email'];
-                        $department = $row['Department'];
+                        $team = $row['team'];
                         $FileName = $row['FileName'];
                         $FileType = $row['FileType'];
                         $FileSize = $row['FileSize'];
@@ -153,7 +162,7 @@ include("../connection.php");
 
                         echo ' <tr>
                         <td> '.$email.' </td>
-                        <td> '.$department.' </td>
+                        <td> '.$team.' </td>
                         <td> '.$FileName.' </td>
                         <td> '.$FileType.' </td>
                         <td> '.formatSizeUnits($FileSize).' </td>

@@ -33,13 +33,13 @@ include("../connection.php");
                 </a>
             </li>
             <li>
-                <a href="announcement.html">
+                <a href="announcement.php">
                     <i class="fa-solid fa-bullhorn"></i> 
                     <span class="link-name">Announcements</span>
                 </a>
             </li>
             <li>
-                <a href="recycle-bin-dashboard.html">
+                <a href="recycle-bin-dashboard.php">
                     <i class="fa-solid fa-trash"></i>
                     <span class="link-name">Recycle Bin</span>
                 </a>
