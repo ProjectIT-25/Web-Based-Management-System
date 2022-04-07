@@ -349,11 +349,20 @@ hr{
 	padding: 0 30px;
 }
 
-.tabcontent .card{
+#announcement-feed, #event-feed{
 	position: absolute;
-	width: 90%;
+	width: 105%;
+	right: 90px;
+	left: 10px;
+
 }
 
+.tabcontent .card{
+	position: relative;
+	width: 94%;
+	margin: 10px; 
+
+}
 .dropleft{
 	cursor: pointer;
 	float: right;

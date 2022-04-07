@@ -31,6 +31,12 @@ include("../connection.php");
 					<span class="link-name">Home</span>
 				</a>
 			</li>
+            <li>
+                <a href="account-management.php">
+                    <i class='bx bxs-user-detail'></i>
+                    <span class="link-name">Accounts</span>
+                </a>
+            </li>
 			<li>
 				<a href="announcement.php">
 					<i class="fa-solid fa-bullhorn"></i>
@@ -44,7 +50,7 @@ include("../connection.php");
 				</a>
 			</li>
 			<li>
-				<a href="../index.html">
+				<a href="../index.php">
 					<i class='bx bx-log-out'></i>
 					<span class="link-name">Logout</span>
 				</a>
@@ -130,7 +136,7 @@ include("../connection.php");
                     } return $bytes; 
                 }
 
-                $result = mysqli_query($connections, "SELECT * FROM recycletbl");
+                $result = mysqli_query($connections, "SELECT * FROM recycletbl LIMIT $start_from, $limit");
                 if ($result) {
                     while ($row = mysqli_fetch_assoc($result)){
                         $File_ID = $row['File_ID'];

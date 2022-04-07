@@ -33,6 +33,12 @@ include("../connection.php");
                 </a>
             </li>
             <li>
+                <a href="account-management.php">
+                    <i class='bx bxs-user-detail'></i>
+                    <span class="link-name">Accounts</span>
+                </a>
+            </li>
+            <li>
                 <a href="announcement.php">
                     <i class="fa-solid fa-bullhorn"></i> 
                     <span class="link-name">Announcements</span>
@@ -94,7 +100,7 @@ include("../connection.php");
                         $page=1;
                     };  
                     $start_from = ($page-1) * $limit;  
-                    $result = mysqli_query($connections, "SELECT * FROM pending_request_tbl");
+                    $result = mysqli_query($connections, "SELECT * FROM pending_request_tbl LIMIT $start_from, $limit");
 
                     if ($result) {
                         while ($row = mysqli_fetch_assoc($result)) {

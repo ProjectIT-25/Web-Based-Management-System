@@ -45,7 +45,7 @@ include("../connection.php");
                 </a>
             </li>
             <li>
-                <a href="../index.html">
+                <a href="../index.php">
                     <i class='bx bx-log-out'></i>
                     <span class="link-name">Logout</span>
                 </a>
@@ -139,7 +139,7 @@ include("../connection.php");
                 } return $bytes; 
             }
 
-            $result = mysqli_query($connections, "SELECT * FROM filetbl");
+            $result = mysqli_query($connections, "SELECT * FROM filetbl LIMIT $start_from, $limit");
             if ($result) {
                 while ($row = mysqli_fetch_assoc($result)){
                     $File_ID = $row['File_ID'];

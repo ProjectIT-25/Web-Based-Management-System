@@ -27,9 +27,15 @@ include("../connection.php");
         </div>
         <ul class="nav-links">
             <li>
-                <a href="mcc-files.php">
+                <a href="#">
                     <i class= "bx bx-grid-alt text-white"></i>
                     <span class="link-name text-white">Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="account-management.php">
+                    <i class='bx bxs-user-detail'></i>
+                    <span class="link-name">Accounts</span>
                 </a>
             </li>
             <li>
@@ -45,7 +51,7 @@ include("../connection.php");
                 </a>
             </li>
             <li>
-                <a href="../index.html">
+                <a href="../index.php">
                     <i class='bx bx-log-out'></i>
                     <span class="link-name">Logout</span>
                 </a>
@@ -147,7 +153,7 @@ include("../connection.php");
                     } return $bytes; 
                 }
 
-                $result = mysqli_query($connections, "SELECT * FROM filetbl");
+                $result = mysqli_query($connections, "SELECT * FROM filetbl LIMIT $start_from, $limit");
                 if ($result) {
                     while ($row = mysqli_fetch_assoc($result)){
                         $File_ID = $row['File_ID'];

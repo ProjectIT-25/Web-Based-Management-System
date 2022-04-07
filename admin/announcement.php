@@ -1,3 +1,7 @@
+<?php 
+	include('../connection.php');
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +17,7 @@
 	<!-- BOOTSTRAP 3 CSS -->
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<!-- LOCAL CSS -->
-	<link rel="stylesheet" type="text/css" href="../css/a-announcements.css">
+	<link rel="stylesheet" type="text/css" href="../css/a-announcements.css?v=1">
 </head>
 <body>
 	<!-- SIDEBAR START -->
@@ -29,6 +33,12 @@
 					<span class="link-name">Home</span>
 				</a>
 			</li>
+            <li>
+                <a href="account-management.php">
+                    <i class='bx bxs-user-detail'></i>
+                    <span class="link-name">Accounts</span>
+                </a>
+            </li>
 			<li>
 				<a href="#">
 					<i class="fa-solid fa-bullhorn text-white"></i>
@@ -42,33 +52,12 @@
 				</a>
 			</li>
 			<li>
-				<a href="../index.html">
+				<a href="../index.php">
 					<i class='bx bx-log-out'></i>
 					<span class="link-name">Logout</span>
 				</a>
 			</li>
 		</ul>
-	</div>
-		<form action="/html/tags/html_form_tag_action.cfm" method="post">
-			<form>  
-				<label> Select Team: </label>  
-				<select>  
-					<option value = "Project-IT-1"> Group 1   
-					</option>  
-					<option value = "Project-IT-2"> Group 2   
-					</option>  
-					<option value = "Project-IT-3"> Group 3  
-					</option>  
-					<option value = "Project-IT-4"> Group 4  
-					</option>  
-				</select> 
-
-				<!-- ENDING OF ANNOUNCMENT & EVENTS PUBLISH -->
-				<!-- PUBLISH & CLEAR -->
-				<button class="button">Submit</button>
-				<button class="button1">Clear</button>
-			</form>  
-		</form>  
 	</div>
 	<!-- SIDEBAR END -->
 	<!-- TOPBAR START AND SECTION START -->
@@ -94,77 +83,73 @@
 		<!-- TABS FOR POSTING END -->
 		<!-- TABS TEXTFIELD START -->
 		<!-- COMPOSE ANNOUNCEMENT START -->
-		<div class="modal fade" id="Announcement" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="width: 100%;">
-			<div class="modal-dialog modal-dialog modal-lg" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLongTitle">Compose Announcement</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<form action="announcement.php" method="GET">
+		<form method="post" action="register-announcement.php">
+			<div class="modal fade" id="Announcement" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="width: 100%;">
+				<div class="modal-dialog modal-dialog modal-lg" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLongTitle">Compose Announcement</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
 							<div class="form-group">
-								<label for="announcement-title">Announcement Title</label>
-								<input class="form-control" type="text" name="announcement-title" placeholder="Announcement Title">
+								<input type="number" name="announcement_type" value="0" hidden>
+								<label for="title">Announcement Title</label>
+								<input class="form-control" type="text" name="title" placeholder="Announcement Title">
 							</div>
-							<label for="compose-announcement">Compose Anouncement</label>
-							<textarea class="form-control" name="compose-announcement" placeholder="Description"></textarea>
+							<label for="content">Compose Anouncement</label>
+							<textarea class="form-control" name="content" placeholder="Description"></textarea>
 						</div>
 						<div class="modal-footer">
 							<select class="mr-auto" name="team" style="width: 30%;">
-								<option disabled selected>Select a team</option>
-    							<option value="">Project-IT-25</option>
+								<option disabled selected value="">Select a team</option>
+								<option value="">Project-IT-25</option>
 							</select>
-							<button type="submit" class="btn btn-primary">Publish</button>
+							<button type="submit" class="btn btn-primary" name="post-announcement">Publish</button>
 							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-						</div>	
-						<h1>Date: <?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y, h:i A'); ?></h1>
-						<h1>Announcement Title: <?php echo $_GET["announcement-title"]; ?></h1>
-						<h1>Announcement Content: <?php echo $_GET["compose-announcement"]; ?></h1>
-					</form>
+						</div>
+					</div>
 				</div>
-					
 			</div>
-		</div>
+		</form>
 		<!-- COMPOSE ANNOUNCEMENT END -->
 		
 		<!-- COMPOSE EVENT START -->
-		<div class="modal fade" id="Event" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="width: 100%;">
-			<div class="modal-dialog modal-dialog modal-lg" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLongTitle">Compose Event</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<form action="announcement.php" method="GET">
+		<form  method="POST" action="register-announcement.php">
+			<div class="modal fade" id="Event" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" style="width: 100%;">
+				<div class="modal-dialog modal-dialog modal-lg" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLongTitle">Compose Event</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+
 							<div class="form-group">
-								<label for="event-title">Event Title</label>
-								<input class="form-control" type="text" name="event-title" placeholder="Event Title">
+								<input type="number" name="announcement_type" value="1" hidden>
+								<label for="title">Event Title</label>
+								<input class="form-control" type="text" name="title" placeholder="Event Title">
 							</div>
 							<div class="form-group">
 								<label for="schedule">Schedule</label>
 								<input class="form-control" type="datetime-local" name="schedule">
 							</div>
-							<label for="compose-event">Compose Event</label>
-							<textarea class="form-control" name="compose-event" placeholder="Description"></textarea>
+							<label for="content">Compose Event</label>
+							<textarea class="form-control" name="content" placeholder="Description"></textarea>
 						</div>
 						<div class="modal-footer">
-							<button type="submit" class="btn btn-primary">Publish</button>
+							<button type="submit" class="btn btn-primary" name="post-announcement">Publish</button>
 							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 						</div>
-						<h1>Date: <?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y, h:i A'); ?></h1>
-						<h1>Event Title: <?php echo $_GET["event-title"]; ?></h1>
-						<h1>Schedule: <?php echo $_GET["schedule"]; ?></h1>
-						<h1>Event Description: <?php echo $_GET["compose-event"]; ?></h1>
-					</form>
+
+					</div>
 				</div>
 			</div>
-		</div>
+		</form>
 		<!-- COMPOSE EVENT START -->
 		<!-- TABS TEXTFIELD END -->
 		<hr>
@@ -182,46 +167,79 @@
 			</div>
 			<!-- ANNOUNCEMENT FEEDS START -->
 			<div id="announcement-feed" class="tabcontent" style="display: block;">
-				<div class="card">
-					<div class="card-header">
-						<strong><?php echo $_GET["announcement-title"]; ?></strong>
+				<?php 
+				$result = mysqli_query($connections, "SELECT * FROM announcementtbl WHERE AnnouncementType = 0 ORDER BY Date DESC");
+
+				if ($result) {
+					while ($row = mysqli_fetch_assoc($result)) {
+						$team = $row['team'];
+						$title = $row['title'];
+						$content = $row['content'];
+						$date = $row['Date'];
+						$date = date_format(new DateTime($date), 'F d, Y, h:i A');
+
+
+						echo '<div class="card">
+						<div class="card-header">
+						<strong>'.$title.'</strong>
 						<span class="dropleft">
-							<i class="fa-solid fa-ellipsis drop" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
-							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-								<a class="dropdown-item" href="#">Edit</a>
-								<a class="dropdown-item" href="#">Delete</a>
-							</div>
+						<i class="fa-solid fa-ellipsis drop" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						<a class="dropdown-item" href="#">Edit</a>
+						<a class="dropdown-item" href="#">Delete</a>
+						</div>
 						</span>
-					</div>
-					<div class="card-body">
-						<h5 class="card-title"><?php echo $_GET["compose-announcement"]; ?></h5>
-					</div>
-					<div class="card-footer text-muted">
-					<?php date_default_timezone_set('Asia/Manila'); echo date('F d, Y, h:i A'); ?>
-					</div>
-				</div>
+						</div>
+						<div class="card-body">
+						<h5 class="card-title">'.nl2br($content).'</h5>
+						</div>
+						<div class="card-footer text-muted">
+						<strong>'.$date.'</strong>
+						</div>
+
+
+						</div>';
+					}
+				}
+				?>
 			</div>
 			<!-- ANNOUNCEMENT FEEDS END -->
 			<!-- EVENT FEEDS START -->
 			<div id="event-feed" class="tabcontent">
-				<div class="card">
-					<div class="card-header">
-						<strong><?php echo $_GET["event-title"]; ?></strong>
+				<?php 
+				$result = mysqli_query($connections, "SELECT * FROM announcementtbl WHERE AnnouncementType = 1 ORDER BY Date DESC");
+
+				if ($result) {
+					while ($row = mysqli_fetch_assoc($result)) {
+						$team = $row['team'];
+						$title = $row['title'];
+						$content = $row['content'];
+						$schedule = $row['Schedule'];
+						$schedule = date_format(new DateTime($schedule), 'F d, Y, h:i A');
+
+						echo '<div class="card">
+						<div class="card-header">
+						
+						<strong>'.$title.'</strong>
 						<span class="dropleft">
-							<i class="fa-solid fa-ellipsis" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
-							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-								<a class="dropdown-item" href="#">Edit</a>
-								<a class="dropdown-item" href="#">Delete</a>
-							</div>
+						<i class="fa-solid fa-ellipsis drop" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+						<a class="dropdown-item" href="#">Edit</a>
+						<a class="dropdown-item" href="#">Delete</a>
+						</div>
 						</span>
-					</div>
-					<div class="card-body">
-						<h5 class="card-title"><?php echo $_GET["compose-event"]; ?></h5>
-					</div>
-					<div class="card-footer text-muted">
-						<?php echo $_GET["schedule"]; ?>
-					</div>
-				</div>
+						</div>
+						<div class="card-body">
+						<h5 class="card-title">'.nl2br($content).'</h5>
+						</div>
+						<div class="card-footer text-muted">
+						<strong>'.$schedule.'</strong>
+						</div>
+
+						</div>';
+					}
+				}
+				?>
 			</div>
 			<!-- EVENT FEEDS END -->
 			</div>
@@ -230,7 +248,7 @@
 	<!-- SECTION END -->
 
 	<!-- FOOTER -->
-	<footer>&copy; Copyright 2022 - Project-IT-25 - Melham Construction Interns</footer>
+	<!-- <footer>&copy; Copyright 2022 - Project-IT-25 - Melham Construction Interns</footer> -->
 	
 	<!-- BOOTSTRAP JS -->
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -244,4 +262,3 @@
 	<script type="text/javascript" src="../js/tabswitch.js"></script>
 </body>
 </html>
-
