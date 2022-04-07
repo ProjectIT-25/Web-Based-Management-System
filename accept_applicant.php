@@ -13,14 +13,13 @@ if (isset($_GET['applicantID'])) {
 	$userLvl=$_GET['userLvl'];
 
 
-	$admin = "INSERT INTO admintbl VALUES ('', '$fname', '$mname', '$lname', '$suffix', '$email', '$password', '$userLvl')";
-	$intern = "INSERT INTO interntbl VALUES ('', '$fname', '$mname', '$lname', '$suffix','$team', '$email', '$password', '$userLvl')";
+	$register = "INSERT INTO accountstbl VALUES ('', '$fname', '$mname', '$lname', '$suffix','$team', '$email', '$password', '$userLvl')";
 
-	$name = $fname.' '.$mname.' '.$lname.' '.$suffix;
+	$name = $fname.' '.$mname.' '.$lname.' '.$suffix.' ';
 
 	if ($userLvl == 0) {
-		mysqli_query($connections, $admin);
-		#TOAST ALERT STARTS HERE#
+		mysqli_query($connections, $register);
+	#TOAST ALERT STARTS HERE#
 		echo '
 		<script type="text/javascript">setTimeout(function () { 
 			const Toast = Swal.mixin({
@@ -28,47 +27,43 @@ if (isset($_GET['applicantID'])) {
 				position: "top-end",
 				showConfirmButton: false,
 				timer: 10000,
-				timerProgressBar: true,
+				timerProgressBar: true
 				})
 				Toast.fire({
 					icon: "success",
 					title: "'.$name.'is successfully registered as Admin!"
 
 					}); 
-					},100)</script>;
+					},100);</script><color=#ffffff>
 
 					<script>window.location.href="sendmail.php?email='.$email.'&password='.$password.'&fname='.$fname.'";</script>';
 
 					mysqli_query($connections, "DELETE FROM pending_request_tbl WHERE id=$id");
+				} else {
+					echo '
+					<script type="text/javascript">setTimeout(function () { 
+						const Toast = Swal.mixin({
+							toast: true,
+							position: "top-end",
+							showConfirmButton: false,
+							timer: 10000,
+							timerProgressBar: true
+							})
+							Toast.fire({
+								icon: "success",
+								title: "'.$name.'is successfully registered as Intern!"
 
-	}
-	else{
-		mysqli_query($connections, $intern);
-		#TOAST ALERT STARTS HERE#
-		echo '
-		<script type="text/javascript">setTimeout(function () { 
-			const Toast = Swal.mixin({
-				toast: true,
-				position: "top-end",
-				showConfirmButton: false,
-				timer: 10000,
-				timerProgressBar: true,
-				})
-				Toast.fire({
-					icon: "success",
-					title: "'.$name.'is successfully registered as Intern!"
+								}); 
+								},100);</script><color=#ffffff>
 
-					}); 
-					},100)</script>;
+								<script>window.location.href="sendmail.php?email='.$email.'&password='.$password.'&fname='.$fname.'";</script>';
+								
+								mysqli_query($connections, "DELETE FROM pending_request_tbl WHERE id=$id");
+							}
 
-					<script>window.location.href="sendmail.php?email='.$email.'&password='.$password.'&fname='.$fname.'";</script>';
+						}
+						
 
-					mysqli_query($connections, "DELETE FROM pending_request_tbl WHERE id=$id");
+						?>
 
-	}
-
-	 
-}
-?>
-
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+						<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

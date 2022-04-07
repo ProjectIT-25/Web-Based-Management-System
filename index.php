@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 }
 
 if($email && $password){
-	$check_email = mysqli_query($connections,"SELECT id, Email, Password, UserLevel FROM interntbl where Email='$email' UNION SELECT id, Email, Password, UserLevel FROM admintbl where Email='$email'");
+	$check_email = mysqli_query($connections,"SELECT id, Email, Password, UserLevel FROM accountstbl where Email='$email'");
 	$check_email_row = mysqli_num_rows($check_email);
 
 	if ($check_email_row > 0) { 
@@ -130,7 +130,7 @@ if($email && $password){
 			<!-- LOGIN FORM START -->
 			<form id="login" class="input-group form-group" form method = "POST" action = "index.php">
 				<p>Login to Dashboard</p>
-				<input type="text" class="input-field" placeholder="Email" name="email" required autofocus></input>
+				<input type="email" class="input-field" placeholder="Email" name="email" required autofocus></input>
 				<input type="password" class=" input-field" placeholder="Password" name="password" required></input>
 				<button type="submit" class="submit-btn" name="login">Log in</button>
 			</form>
@@ -149,30 +149,14 @@ if($email && $password){
 				<input type="text" class="input-field" placeholder="Middle Name" name="mname" required></input>
 				<input type="text" class="input-field" placeholder="Last Name" name="lname" required></input>
 				<input type="text" class="input-field" placeholder="Suffix"name="suffix"></input>
-				<input type="text" class="input-field" placeholder="Email" name="email" required></input>
+				<input type="email" class="input-field" placeholder="Email" name="email" required></input>
 				<input type="password" class="input-field" placeholder="Password" name="password" required></input>
 				<input type="password" class="input-field" placeholder="Confirm Password" name="cpassword" required></input>
 				<button type="submit" class="submit-btn" name="register">Register</button>
 			</form>
 			<!-- REGISTER FORM START -->
 		</div>
-	</div><a href="#"><i class="fa-regular fa-eye"></i></a>
-					<script type="text/javascript">
-					$(document).ready(function() {
-						$("#show_hide_password a").on('click', function(event) {
-							event.preventDefault();
-							if($('#show_hide_password input').attr("type") == "text"){
-								$('#show_hide_password input').attr('type', 'password');
-								$('#show_hide_password i').addClass( "fa-eye-slash" );
-								$('#show_hide_password i').removeClass( "fa-eye" );
-							}else if($('#show_hide_password input').attr("type") == "password"){
-								$('#show_hide_password input').attr('type', 'text');
-								$('#show_hide_password i').removeClass( "fa-eye-slash" );
-								$('#show_hide_password i').addClass( "fa-eye" );
-							}
-						});
-					});
-				</script>
+	</div>
 	<footer>
 		<div class="flinks">
 			<a href="http://uip.melhamconstruction.ph/">UIP Dashboard</a>
