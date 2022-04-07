@@ -42,7 +42,7 @@ $password = $row['Password'];
 		</div>
 		<ul class="nav-links">
 			<li>
-				<a href="#">
+				<a href="mcc-files.php">
 					<i class= "bx bx-grid-alt"></i>
 					<span class="link-name">Home</span>
 				</a>
