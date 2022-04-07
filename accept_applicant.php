@@ -39,7 +39,7 @@ if (isset($_GET['applicantID'])) {
 					<script>window.location.href="sendmail.php?email='.$email.'&password='.$password.'&fname='.$fname.'";</script>';
 
 					mysqli_query($connections, "DELETE FROM pending_request_tbl WHERE id=$id");
-				} else {
+				}else{
 					echo '
 					<script type="text/javascript">setTimeout(function () { 
 						const Toast = Swal.mixin({
@@ -57,12 +57,12 @@ if (isset($_GET['applicantID'])) {
 								},100);</script><color=#ffffff>
 
 								<script>window.location.href="sendmail.php?email='.$email.'&password='.$password.'&fname='.$fname.'";</script>';
-								
+
 								mysqli_query($connections, "DELETE FROM pending_request_tbl WHERE id=$id");
 							}
 
 						}
-						
+
 
 						?>
 
