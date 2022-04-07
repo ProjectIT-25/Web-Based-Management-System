@@ -1,0 +1,380 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap');
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Zen Kaku Gothic New', sans-serif;
+}
+
+body{
+	min-height: 100vh;
+	width: 100%;
+}
+
+.sidebar{
+	position: fixed;
+	top: 0;
+	height: 100vh;
+	width: 60px;
+	background: #00243E;
+	transition: all 0.5s ease;
+	z-index: 1;
+}
+
+.sidebar.active{
+	width: 180px;
+}
+
+.sidebar .menu-details{
+	height: 80px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+}
+
+.sidebar .menu-details i{
+	font-size: 28px;
+	font-weight: 500;
+	color: #ED682A;
+	min-width: 60px;
+	text-align: center;
+	cursor: pointer;
+}
+
+.sidebar .menu-details .menu-name{
+	font-size: 24px;
+	font-weight: 500;
+	color: #ED682A;
+	margin-left: 8px;
+	margin-top: -5px;
+}
+
+.sidebar .nav-links{
+	margin-top: 16px;
+	overflow: hidden;
+}
+
+.sidebar .nav-links li{
+	height: 50px;
+	width: 100%;
+	list-style: none;
+	border-bottom: 1px solid #003860;
+}
+
+.sidebar .nav-links li a{
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	transition: all 0.4s ease;
+}
+
+.sidebar .nav-links li a:hover{
+	background: #003860;
+}
+
+.sidebar .nav-links li a i{
+	min-width: 60px;
+	text-align: center;
+	color: #ED682A;
+	font-size: 18px;
+}
+
+.sidebar .nav-links li a .link-name{
+	color: #ED682A;
+	font-size: 15px;
+	font-weight: 400;
+	white-space: nowrap;
+}
+
+.sidebar .nav-links .dropdown-menu .dropdown-item:hover{
+	background: #7f7f7f;
+	color: #fff;
+}
+
+/*HOME SECTION*/
+
+.home-section{
+	background: #fff;
+	position: relative;
+	min-height: 100vh;
+	width: calc(100% - 60px);
+	left: 60px;
+	transition: all 0.5s ease;
+	top: 80px;
+}
+
+.sidebar.active ~ .home-section,
+.sidebar.active ~ .home-section nav{
+	width: calc(100% - 180px);
+	left: 180px;
+}
+
+.home-section nav{
+	position: fixed;
+	width: calc(100% - 60px);
+	left: 60px;
+	height: 80px;
+	top: 0;
+	background: #00243E;
+	color: #ED682A;
+	padding: 0 20px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	transition: all 0.5s ease;
+	z-index: 1;
+}
+
+.home-section nav .sidebar-button{
+	display: flex;
+	align-items: center;
+	font-size: 24px;
+	font-weight: 500;
+}
+
+.home-section nav .sidebar-button i{
+	font-size: 35px;
+	margin-right: 10px;
+}
+
+.home-section nav .sidebar-button .dashboard{
+	margin-top: -4px;
+}
+
+.btn-group .dropdown-menu .dropdown-item:hover{
+	background: #7f7f7f;
+	color: #fff;
+}
+
+.home-section nav .name{
+	display: flex;
+	align-items: center;
+	font-size: 24px;
+	font-weight: 500;
+}
+
+/*TABS FOR POSTING*/
+/* Style the tab */
+.tab {
+	position: relative;
+	left: 50px;
+	margin: 10px 0;
+	padding: 0;
+	overflow: hidden;
+	border: 1px solid #ccc;
+	background-color: #337ab7;
+	width: 90%;
+	border-radius: 5px;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+	background-color: inherit;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	padding: 14px 16px;
+	transition: 0.3s;
+	font-size: 17px;
+	color: white;
+	width: 100%;
+	font-weight: 600;
+	text-align: left;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+	background-color: #a3d8ff;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+	background-color: #a3d8ff;
+}
+
+/*TEXT EDITOR*/
+#editor {
+	box-shadow: 0 0 2px #CCC;
+	min-height: 150px;
+	overflow: auto;
+	padding: 1em;
+	margin-top: 20px;
+	resize: vertical;
+	outline: none;
+}
+
+.toolbar a,
+.fore-wrapper,
+.back-wrapper {
+	border: 1px solid #AAA;
+	background: #FFF;
+	font-family: 'Candal';
+	border-radius: 1px;
+	color: black;
+	padding: 5px;
+	width: 2em;
+	margin-top: 10px;
+	display: inline-block;
+	text-decoration: none;
+	box-shadow: 0px 1px 0px #CCC;
+}
+
+.toolbar a:hover, .fore-wrapper:hover, .back-wrapper:hover {
+	background: #f2f2f2;
+	border-color: #8c8c8c;
+}
+
+a[data-command='redo'],a[data-command='strikeThrough'],a[data-command='justifyFull'],a[data-command='insertOrderedList'],a[data-command='outdent'],a[data-command='p'],a[data-command='superscript']{
+	margin-right:5px;
+	border-radius:0 3px 3px 0;
+}
+
+a[data-command='undo'],.fore-wrapper,a[data-command='justifyLeft'],a[data-command='insertUnorderedList'],a[data-command='indent'],a[data-command='h1'],a[data-command='subscript']{
+	border-radius:3px 0 0 3px;
+}
+
+a.palette-item {
+	height: 1em;
+	border-radius: 3px;
+	margin: 2px 1px;
+	width: 1em;
+}
+
+.fore-palette,
+.back-palette {
+	display: none;
+}
+
+.fore-wrapper,
+.back-wrapper {
+	display: inline-block;
+	cursor: pointer;
+}
+
+.fore-wrapper:hover .fore-palette,
+.back-wrapper:hover .back-palette {
+	display: block;
+	float: left;
+	position: absolute;
+	padding: 3px;
+	width: 10em;
+	background: #FFF;
+	border: 1px solid #DDD;
+	box-shadow: 0 0 5px #CCC;
+	height: 4.4em;
+}
+
+.fore-palette a,
+.back-palette a {
+	background: #FFF;
+	margin-bottom: 2px;
+}
+
+/*POST OPTION BUTTONS*/
+#Events label{
+	font-weight: 600;
+}
+
+hr{
+	border: 10px solid #fff;
+}
+
+/*FEEDS*/
+.feeds{
+	margin: 0 10px;
+}
+
+.search-feed{
+	position: absolute;
+	width: 92%;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.search-feed input[type=date]{
+	margin-right: 10px;
+}
+
+.search-feed input[type=text]{
+	margin-right: 10px;
+}
+
+.search-feed button{
+	padding: 0 20px;
+	border-radius: 5px;
+	border: none;
+	background-color: #00243e;
+	color: #fff;
+	font-weight: 600;
+}
+
+.tab-feeds {
+	position: relative;
+	left: 30px;
+	overflow: hidden;
+	background-color: #779cb7;
+	width: 275.1px;
+}
+
+/* Style the buttons inside the tab */
+.tab-feeds button {
+	background-color: inherit;
+	float: left;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	padding: 14px 16px;
+	transition: 0.3s;
+	font-size: 17px;
+	color: #fff;
+	font-weight: 600;
+}
+
+/* Change background color of buttons on hover */
+.tab-feeds button:hover {
+	background-color: #a3d8ff;
+}
+
+/* Create an active/current tablink class */
+.tab-feeds button.active {
+	background-color: #00243e;
+}
+
+.tabcontent{
+	display: none;
+	margin-top: 20px;
+	padding: 0 30px;
+}
+
+.tabcontent .card{
+	position: absolute;
+	width: 90%;
+}
+
+.dropleft{
+	cursor: pointer;
+	float: right;
+}
+
+.dropdown-item{
+	font-weight: 500;
+}
+
+.dropdown-item:hover{
+	background-color: #a3d8ff;
+	color: #fff;
+}
+
+footer{
+	position: relative;
+	display: flex;
+	justify-content: center;
+	font-size: 12px;
+	top: 80px;
+	background: #00243E;
+	color: #ea8252;
+	z-index: 1;
+}
