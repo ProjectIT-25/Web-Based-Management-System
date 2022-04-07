@@ -43,8 +43,8 @@ $password = $row['Password'];
 		<ul class="nav-links">
 			<li>
 				<a href="#">
-					<i class= "bx bx-grid-alt text-white"></i>
-					<span class="link-name text-white">Home</span>
+					<i class= "bx bx-grid-alt"></i>
+					<span class="link-name">Home</span>
 				</a>
 			</li>
             <li>
