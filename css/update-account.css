@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@300;400;500;700;900&display=swap');
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Zen Kaku Gothic New', sans-serif;
+}
+
+body{
+	min-height: 100vh;
+	width: 100%;
+}
+
+.sidebar{
+	position: fixed;
+	top: 0;
+	height: 100vh;
+	width: 60px;
+	background: #00243E;
+	transition: all 0.5s ease;
+	z-index: 1;
+}
+
+.sidebar.active{
+	width: 180px;
+}
+
+.sidebar .menu-details{
+	height: 80px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+}
+
+.sidebar .menu-details i{
+	font-size: 28px;
+	font-weight: 500;
+	color: #ED682A;
+	min-width: 60px;
+	text-align: center;
+	cursor: pointer;
+
+}
+
+.sidebar .menu-details .menu-name{
+	font-size: 24px;
+	font-weight: 500;
+	color: #ED682A;
+	margin-left: 8px;
+	margin-top: -5px;
+}
+
+.sidebar .nav-links{
+	margin-top: 16px;
+	overflow: hidden;
+}
+
+.sidebar .nav-links li{
+	height: 50px;
+	width: 100%;
+	list-style: none;
+	border-bottom: 1px solid #003860;
+}
+
+.sidebar .nav-links li a{
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	transition: all 0.4s ease;
+}
+
+.sidebar .nav-links li a:hover{
+	background: #003860;
+}
+
+.sidebar .nav-links li a i{
+	min-width: 60px;
+	text-align: center;
+	color: #ED682A;
+	font-size: 18px;
+}
+
+.sidebar .nav-links li a .link-name{
+	color: #ED682A;
+	font-size: 15px;
+	font-weight: 400;
+	white-space: nowrap;
+}
+
+.sidebar .nav-links .dropdown-menu .dropdown-item:hover{
+	background: #7f7f7f;
+	color: #fff;
+
+}
+
+/*HOME SECTION*/
+
+.home-section{
+	background: #fff;
+	position: relative;
+	min-height: 100vh;
+	width: calc(100% - 60px);
+	left: 60px;
+	transition: all 0.5s ease;
+	top: 80px;
+}
+
+.sidebar.active ~ .home-section,
+.sidebar.active ~ .home-section nav{
+	width: calc(100% - 180px);
+	left: 180px;
+}
+
+.sidebar.active ~ .home-section .event-panel{
+	padding: 78px 0 !important;
+} 
+
+.home-section nav{
+	position: fixed;
+	width: calc(100% - 60px);
+	left: 60px;
+	height: 80px;
+	top: 0;
+	background: #00243E;
+	color: #ED682A;
+	padding: 0 20px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	transition: all 0.5s ease;
+	z-index: 1;
+}
+
+.home-section nav .sidebar-button{
+	display: flex;
+	align-items: center;
+	font-size: 24px;
+	font-weight: 500;
+}
+
+.home-section nav .sidebar-button i{
+	font-size: 35px;
+	margin-right: 10px;
+}
+
+.home-section nav .sidebar-button .dashboard{
+	margin-top: -4px;
+}
+
+.btn-group .dropdown-menu .dropdown-item:hover{
+	background: #7f7f7f;
+	color: #fff;
+}
+
+.home-section nav .name{
+	display: flex;
+	align-items: center;
+	font-size: 24px;
+	font-weight: 500;
+}
+
+.home-section nav button,
+.home-section nav button:hover,
+.home-section nav button:focus,
+.home-section nav button:active{
+	background: transparent;
+	color: #ED682A;
+	overflow: hidden;
+	border: none;
+	box-shadow: none;
+}
