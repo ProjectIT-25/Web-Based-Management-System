@@ -1,5 +1,19 @@
 ﻿<?php 
 include("../connection.php");
+session_start();
+
+
+ if (!isset($_SESSION['id']))
+  {
+    if (!isset($_SESSION['Email']))
+    {
+     echo "<script type='text/javascript'>alert('You must login first!');</script>";
+     echo "<script type='text/javascript'> document.location = '../index.php'; </script>";
+}
+}
+if($_SESSION["UserLevel"] == 1 ){  
+header("location:javascript://history.go(-1)"); //return to previous page
+} 
 ?>
 <!DOCTYPE html>
 <html>
@@ -51,7 +65,7 @@ include("../connection.php");
                 </a>
             </li>
             <li>
-                <a href="../index.php">
+                <a href="../logout.php">
                     <i class='bx bx-log-out'></i>
                     <span class="link-name">Logout</span>
                 </a>
@@ -65,7 +79,7 @@ include("../connection.php");
                 <span class="dashboard">ACCOUNT MANAGEMENT</span>
             </div>
             <div class="d-flex justify-content-center align-items-center">
-                <span class="name">ADMIN USER</span>
+                <span class="name"><?php echo $_SESSION['FirstName']?></span>
             </div>
         </nav>
 

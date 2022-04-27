@@ -1,5 +1,15 @@
 <?php 
 include("../connection.php");
+session_start();
+
+ if (!isset($_SESSION['id']))
+  {
+    if (!isset($_SESSION['Email']))
+    {
+     echo "<script type='text/javascript'>alert('You must login first!');</script>";
+     echo "<script type='text/javascript'> document.location = '../index.php'; </script>";
+}
+}
 
 $id = $_GET['id'];
 $getrecord = mysqli_query($connections, "SELECT * FROM accountstbl WHERE id = $id");
@@ -16,6 +26,10 @@ $suffix = $row['Suffix'];
 $email = $row['Email'];
 $password = $row['Password'];
 }
+
+if($_SESSION["UserLevel"] == 1 ){  
+header("location:javascript://history.go(-1)"); //return to previous page
+} 
 ?>
 
 <!DOCTYPE html>
@@ -66,7 +80,7 @@ $password = $row['Password'];
 				</a>
 			</li>
 			<li>
-				<a href="../index.php">
+				<a href="../logout.php">
 					<i class='bx bx-log-out'></i>
 					<span class="link-name">Logout</span>
 				</a>
@@ -128,7 +142,7 @@ $password = $row['Password'];
 					</div>
 				</div>
 				<button class="btn btn-block btn-warning mt-4" type="submit" name="update">Update</button>
-			</form>
+			</form>	                                                                                                                                                                                                          
 			<?php 
 			
 			if(isset($_POST['update'])){

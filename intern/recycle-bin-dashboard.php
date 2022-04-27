@@ -1,6 +1,24 @@
-<!DOCTYPE html>
-<?php include '../connection.php'; 
+<?php 
+session_start();
+include("../connection.php");
+
+
+ if (!isset($_SESSION['id']))
+  {
+    if (!isset($_SESSION['Email']))
+    {
+     echo "<script type='text/javascript'>alert('You must login first!');</script>";
+     echo "<script type='text/javascript'> document.location = '../index.php'; </script>";
+}
+}
+	$email=$_SESSION['Email'];
+
+	if($_SESSION["UserLevel"] == 0 ){  
+header("location:javascript://history.go(-1)"); //return to previous page
+} 
 ?>
+
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -42,7 +60,7 @@
 				</a>
 			</li>
 			<li>
-				<a href="../index.php">
+				<a href="../logout.php">
 					<i class='bx bx-log-out'></i>
 					<span class="link-name">Logout</span>
 				</a>
@@ -60,7 +78,7 @@
 <i class='bx bx-search'></i>
 </div> -->
 <div class="d-flex justify-content-center align-items-center">
-	<span class="name">Intern</span>
+	<span class="name"><?php echo htmlentities($_SESSION['FirstName']);?></span>
 </div>
 </nav>
 
@@ -75,7 +93,7 @@
 
 					<!--COUNT ALL THE FILES IN RECYCLE BIN-->
 					<?php
-					$result = mysqli_query($connections, "SELECT COUNT(1) FROM recycletbl");
+					$result = mysqli_query($connections, "SELECT COUNT(*) FROM recycletbl WHERE Email='$email'");
 					$row = mysqli_fetch_array($result);
 
 					$total = $row [0];
@@ -140,8 +158,10 @@
 				} return $bytes; 
 			}
 
-			$result = mysqli_query($connections, "SELECT * FROM recycletbl LIMIT $start_from, $limit");
-			if ($result) {
+			
+
+			$result = mysqli_query($connections, "SELECT * FROM recycletbl WHERE Email='$email' LIMIT $start_from, $limit");
+            if ($result) {
 				while ($row = mysqli_fetch_assoc($result)){
 
 

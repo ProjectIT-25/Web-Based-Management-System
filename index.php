@@ -1,5 +1,17 @@
 <?php
+error_reporting(0);
 include("connection.php");
+session_start();
+if (isset($_SESSION['id']))
+  { if ($_SESSION['UserLevel']===0) {
+  	echo "<script type='text/javascript'> document.location = 'admin/mcc-files.php'; </script>";
+  } 
+  else {
+  	echo "<script type='text/javascript'> document.location = 'intern/mcc-files.php'; </script>";
+  }
+  
+}
+
 // LOGIN START
 
 $email = $password = "";
@@ -19,19 +31,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 }
 
 if($email && $password){
-	$check_email = mysqli_query($connections,"SELECT id, Email, Password, UserLevel FROM accountstbl where Email='$email'");
+	$check_email = mysqli_query($connections,"SELECT * FROM accountstbl where Email='$email'");
 	$check_email_row = mysqli_num_rows($check_email);
 
 	if ($check_email_row > 0) { 
 		while($row = mysqli_fetch_assoc($check_email)){
 			$user_id = $row["id"];
+			$FirstName = $row['FirstName'];
+			$MiddleName = $row['MiddleName'];
+			$LastName = $row['LastName'];
+			$Suffix = $row['Suffix'];
+			$team = $row['team'];
+			$Email = $row['Email'];
+			$Password = $row['Password'];
 
 			$db_password = $row["Password"];
 			$db_account_type = $row["UserLevel"];
 
 			if($password == $db_password){
-				session_start();
+				
+				
 				$_SESSION["id"] = $user_id;
+				$_SESSION['FirstName'] = $FirstName;
+				$_SESSION['MiddleName'] = $MiddleName;
+				$_SESSION['LastName'] = $LastName;
+				$_SESSION['Suffix'] = $Suffix;
+				$_SESSION['team'] = $team;
+				$_SESSION['Email'] = $Email;
+				$_SESSION['Password'] = $Password; 
+				$_SESSION['UserLevel'] = $db_account_type;
+
+
+			
 				if($db_account_type == 0){
 
 					echo "
@@ -92,24 +123,25 @@ if($email && $password){
 
 						}
 
-					}else{
+					} else {
 						echo 
-						" <script type='text/javascript'>setTimeout(function () { 
-							Swal.fire({
-								title: 'Oops...',
-								icon: 'error',
-								text: 'Wrong email/password combination!',
-								allowOutsideClick: true,
-								allowEscapeKey: true,
-								allowEnterKey: false,
-								timerProgressBar: true,
-								timer: 6000,
-								showConfirmButton: false,
-								}); 
-							},100)</script>";
-
-						}
+							" <script type='text/javascript'>setTimeout(function () { 
+								Swal.fire({
+									title: 'Oops...',
+									icon: 'error',
+									text: 'Not registered!',
+									allowOutsideClick: true,
+									allowEscapeKey: true,
+									allowEnterKey: false,
+									timerProgressBar: true,
+									timer: 6000,
+									showConfirmButton: false,
+									}); 
+								},100)</script>";
 					}
+
+					} 
+					
 				?>
 <!DOCTYPE html>
 <html>

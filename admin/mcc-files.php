@@ -1,5 +1,19 @@
 <?php 
+session_start();
 include("../connection.php");
+
+ if (!isset($_SESSION['id']))
+  {
+    if (!isset($_SESSION['email']))
+    {
+     echo "<script type='text/javascript'>alert('You must login first!');</script>";
+     echo "<script type='text/javascript'> document.location = '../index.php'; </script>";
+}
+}
+
+if($_SESSION["UserLevel"] == 1 ){  
+header("location:javascript://history.go(-1)"); //return to previous page
+} 
 ?>
 <!DOCTYPE html>
 <html>
@@ -51,7 +65,7 @@ include("../connection.php");
                 </a>
             </li>
             <li>
-                <a href="../index.php">
+                <a href="../logout.php">
                     <i class='bx bx-log-out'></i>
                     <span class="link-name">Logout</span>
                 </a>
@@ -64,32 +78,51 @@ include("../connection.php");
             <div class="sidebar-button">
                 <span class="dashboard">ADMIN DASHBOARD</span>
             </div>
-            <!-- <div class="search-box">
-                <input type="text" name="" placeholder="Search">
-                <i class='bx bx-search'></i>
-            </div> -->
             <div class="d-flex justify-content-center align-items-center">
-                <span class="name">Admin</span>
+                <span class="name"><?php echo htmlentities($_SESSION['FirstName']);?></span>
             </div>
         </nav>
 
         <div class="container-fluid px-4">
             <div class="row g3 my-3">
                 <div class="col-md-6 overview">
-                    <a href="announcement.php">
-                        <div class="p-3 shadow-sm d-flex justify-content-around align-items-center rounded" style="background-color: #4682B4; margin:  18px;padding: 115px !important;">
-                            <div>
-                                <h1 class="fs-2 text-white">TODAY'S EVENT</h3>
-                                </div>
+                        <div class="p-3 shadow-sm d-flex justify-content-start  align-items-start rounded" style="background-color: #4682B4; margin:  18px; height: 200px !important; white-space: nowrap; overflow: hidden;">
+                            <div class="text-white" style=" width: 100%;">
+                                <?php 
+                                $result = mysqli_query($connections, "SELECT * FROM announcementtbl WHERE AnnouncementType = 1 ORDER BY Schedule ASC");
+
+                                if ($result) {
+                                    while ($row = mysqli_fetch_assoc($result)) {
+                                        $team = $row['team'];
+                                        $title = $row['title'];
+                                        $content = $row['content'];
+                                        $schedule = $row['Schedule'];
+                                        $today = date_default_timezone_set('Asia/Manila');
+                                        $today = date("Y-m-d H:i:s");
+
+                                        if ($today <= $schedule){
+                                            
+                                            echo '<h3>'.$title.' </h3>';
+                                            echo '<hr style="background-color: white;">';
+                                            echo '<p>'.$content.'</p>';
+                                            echo '<hr style="background-color: white;">';
+                                            echo '<h5>Schedule: '.date_format(new DateTime($schedule), 'F d, Y | h:i A').' </h5>';
+                                            echo ' <a  href="announcement.php"><button class="text-black" style="background-color: #F8F8FF; border: none; padding: 0px 2px;">See more</button></a>';
+                                        }
+                                    }
+                                }
+
+                                ?>
+
                             </div>
-                        </a>
-                    </div>
+                        </div>
+                </div>
 
                     <div class="col-md-6 overview">
                      <a href="pending-accounts.php">
                         <div class="pending-account p-3 shadow-sm d-flex justify-content-around align-items-center rounded text-white" style="background-color: #6A757A; 
                         margin: 18px;
-                        height: 285px;">
+                        height: 200px;">
                         <div>
 
                         <!--COUNT ALL THE FILES OF PENDING ACCOUNTS-->
@@ -113,8 +146,10 @@ include("../connection.php");
     <div class="attendance-tab-header px-4">
         <div class="row">
             <div class="col-md-6">
-                <input type="text" name="" placeholder="Search">
-                <button>Search</button>
+                <form method="POST" action="search.php">
+                    <input type="text" name="search_file" placeholder="Search">
+                    <button type="submit" name="search-file">Search</button>
+                </form>
             </div> 
         </div>
     </div>
@@ -152,6 +187,8 @@ include("../connection.php");
                         $bytes = '0 bytes';
                     } return $bytes; 
                 }
+                
+
 
                 $result = mysqli_query($connections, "SELECT * FROM filetbl LIMIT $start_from, $limit");
                 if ($result) {
@@ -174,7 +211,7 @@ include("../connection.php");
                         <td> '.formatSizeUnits($FileSize).' </td>
                         <td> '.$LastModified.' </td>
                         <td class="mx-auto d-flex justify-content-around"><a href="#"><i class="fa-solid fa-eye text-dark" style="font-size: 20px;"></i></a>
-                        <a onclick="javascript:confirmationDelete($(this));return false;" href="../delete.php?deleteid='.$File_ID.'"><i class="fa-solid fa-trash text-dark" style="font-size: 20px;"></i></a></td>
+                        <a onclick="javascript:confirmationDelete($(this));return false;" href="delete.php?deleteid='.$File_ID.'"><i class="fa-solid fa-trash text-dark" style="font-size: 20px;"></i></a></td>
                         </tr> ';
 
                         // DELETE IF FILE EXPIRED

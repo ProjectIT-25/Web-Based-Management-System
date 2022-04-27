@@ -179,6 +179,7 @@ body{
 .overview{
 	padding-bottom: 10px;
 	margin-top: 30px;
+	left: 20%;
 }
 
 .overview a{
@@ -246,44 +247,18 @@ body{
 
 
 
-/*ANNOUNCEMENT TABLE*/
+.announce, .event{
+	position: absolute;
+	width: 80%;
+	right: 90px;
+	left: 10%;
 
-#announcement {
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
 }
 
-#announcement td, #announcement th {
-  border: 1px solid #ddd;
-  padding: 8px;
-  width: 100%;
-}
-
-#announcement tr:nth-child(even){background-color: #f2f2f2;}
-
-#announcement tr:hover {background-color: #ddd;}
-
-#announcement th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #00243e;
-  color: white;
-}
-
-table .table{
-	width: 100%;
-	table-layout: center;
-}
-
-/*FOOTER*/
-footer{
+.tab-pane .card{
 	position: relative;
-	display: flex;
-	justify-content: center;
-	font-size: 12px;
-	top: 80px;
-	background: #00243E;
-	color: #ea8252;
-	z-index: 1;
+	width: 94%;
+	margin: 10px; 
+
 }
+

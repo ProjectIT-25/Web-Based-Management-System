@@ -1,5 +1,18 @@
 ﻿<?php 
 include("../connection.php");
+session_start();
+
+ if (!isset($_SESSION['id']))
+  {
+    if (!isset($_SESSION['email']))
+    {
+     echo "<script type='text/javascript'>alert('You must login first!');</script>";
+     echo "<script type='text/javascript'> document.location = '../index.php'; </script>";
+}
+}
+if($_SESSION["UserLevel"] == 1 ){  
+header("location:javascript://history.go(-1)"); //return to previous page
+} 
 ?>
 <!DOCTYPE html>
 <html>

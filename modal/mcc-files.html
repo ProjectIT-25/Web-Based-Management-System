@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>UIP Dashboard</title>
+	<meta name="viewport" content="width=device-witdth, initial-scale=1.0">
+	<!-- BOXICONS CDN -->
+	<link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+	<!-- FONTAWESOME CDN -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<!-- BOOTSTRAP 4 CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<!-- LOCAL CSS -->
+	<link rel="stylesheet" type="text/css" href="filesdashboard.css">
+</head>
+<body>
+
+	<div class="sidebar" style="border-right: 1px solid #003860;">
+		<div class="menu-details">
+			<i class='bx bx-menu sidebarBtn'></i>
+			<span class="menu-name">Menu</span>
+		</div>
+		<ul class="nav-links">
+			<li>
+				<a href="#">
+					<i class= "bx bx-grid-alt text-white"></i>
+					<span class="link-name text-white">Files</span>
+				</a>
+			</li>
+      			<li>
+				<a href="announcement.html">
+				        <i class="fa-solid fa-bullhorn"></i>">
+					<span class="link-name">Announcements</span>
+				</a>
+			</li>
+			<li>
+				<a href="recycle-bin-dashboard.html">
+					<i class="fa-solid fa-trash"></i>
+					<span class="link-name">Recycle Bin</span>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<i class='bx bx-log-out'></i>
+					<span class="link-name">Logout</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<!-- Main Content -->
+	<section class="home-section">
+		<nav class="">
+			<div class="sidebar-button">
+				<span class="dashboard">DASHBOARD</span>
+			</div>
+			<!-- <div class="search-box">
+				<input type="text" name="" placeholder="Search">
+				<i class='bx bx-search'></i>
+			</div> -->
+			<div class="d-flex justify-content-center align-items-center">
+				<span class="name">INTERN</span>
+			</div>
+		</nav>
+
+		<div class="container-fluid px-4">
+            <div class="row g3 my-3">
+                <div class="col-md-6 overview">
+			<a href="announcement.html">
+                        <div class="p-3 shadow-sm d-flex justify-content-around align-items-center rounded" style="background-color: #6990F2; padding: 36px !important;">
+                            <div>
+                                <h3 class="fs-2 text-white">ANNOUNCEMENT AND EVENTS</h3>
+                            </div>
+                        </div>
+			</a>
+                    </div>
+                    <div class="col-md-6 overview">
+                        <div class="shadow-sm d-flex justify-content-around align-items-center rounded">
+                            <div class="wrapper">
+                            <form action="#">
+                              <input class="file-input" type="file" name="file" hidden>
+                              <i class="fas fa-cloud-upload-alt"></i>
+                              <p>Browse File to Upload</p>
+                          </form>
+                      </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+		<!-- ATTENDANCE REPORT -->
+		<div class="attendance-tab-header px-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <input type="date">
+                </div> 
+                <div class="col-md-6 d-flex justify-content-end">
+                    <input type="text" name="" placeholder="Search">
+                    <button>Search</button>
+                </div>
+            </div>
+        </div>
+		<div class="col documents-table">
+                        <table class="table sortable table-responsive-md table-bordered bg-white rounded shadow-sm  table-striped text-center">
+                            <thead class="thead-color" style="position: sticky; top: 0;">
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">File name</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">File type</th>
+                                    <th scope="col">Size</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="item">
+                                    <td>01</td>
+                                    <td>Daily Journal (12)</td>
+                                    <td>Day 12 as an Intern</td>
+                                    <td>03/09/2022</td>
+                                    <td>PDF</td>
+                                    <td>0.9 MB</td>
+                                    <td><a href="#" id="myBtn"><i class="fa-solid fa-pen-to-square text-dark" style="font-size: 20px;"></i></a>
+                                    	<a href="#"><i class="fa-solid fa-eye text-dark" style="font-size: 20px;"></i></a></td>
+                                </tr>
+                                <tr class="item">
+                                    <td>02</td>
+                                    <td>Weekly Journal (10)</td>
+                                    <td>My week 10</td>
+                                    <td>03/08/2022</td>
+                                    <td>PDF</td>
+                                    <td>2.0 MB</td>
+                                    <td><a href="#"><i class="fa-solid fa-pen-to-square text-dark" style="font-size: 20px;"></i></a>
+                                        <a href="#"><i class="fa-solid fa-eye text-dark" style="font-size: 20px;"></i></a></td>
+                                </tr>
+                                <tr class="item">
+                                    <td>03</td>
+                                    <td>MOA</td>
+                                    <td>Requesting for sign</td>
+                                    <td>03/07/2022</td>
+                                    <td>DOC</td>
+                                    <td>1.2 MB</td>
+                                    <td><a href="#"><i class="fa-solid fa-pen-to-square text-dark" style="font-size: 20px;"></i></a>
+                                        <a href="#"><i class="fa-solid fa-eye text-dark" style="font-size: 20px;"></i></a></td>
+                                </tr>
+                                <tr class="item">
+                                    <td>04</td>
+                                    <td>Daily Journal (34)</td>
+                                    <td>Debugging of our proposed system</td>
+                                    <td>03/07/2022</td>
+                                    <td>PDF</td>
+                                    <td>1.0 MB</td>
+                                    <td><a href="#"><i class="fa-solid fa-pen-to-square text-dark" style="font-size: 20px;"></i></a>
+                                        <a href="#"><i class="fa-solid fa-eye text-dark" style="font-size: 20px;"></i></a></td>
+                                </tr>
+                                <tr class="item">
+                                    <td>05</td>
+                                    <td>Weekly Journal (6)</td>
+                                    <td>Our team's week 6</td>
+                                    <td>03/06/2022</td>
+                                    <td>ZIP</td>
+                                    <td>2.5 MB</td>
+                                    <td><a href="#"><i class="fa-solid fa-pen-to-square text-dark" style="font-size: 20px;"></i></a>
+                                        <a href="#"><i class="fa-solid fa-eye text-dark" style="font-size: 20px;"></i></a></td>
+                                </tr>
+                                </tr>
+                                <tr class="item">
+                                    <td>06</td>
+                                    <td>Daily Journal (22)</td>
+                                    <td>Designing of the Website</td>
+                                    <td>03/03/2022</td>
+                                    <td>PDF</td>
+                                    <td>1.4 MB</td>
+                                    <td><a href="#"><i class="fa-solid fa-pen-to-square text-dark" style="font-size: 20px;"></i></a>
+                                        <a href="#"><i class="fa-solid fa-eye text-dark" style="font-size: 20px;"></i></a></td>
+                                </tr>
+                                </tr>
+                                <tr class="item">
+                                    <td>07</td>
+                                    <td>Acceptance Letter</td>
+                                    <td>Request for sign</td>
+                                    <td>03/02/2022</td>
+                                    <td>DOC</td>
+                                    <td>0.9 MB</td>
+                                    <td><a href="#"><i class="fa-solid fa-pen-to-square text-dark" style="font-size: 20px;"></i></a>
+                                        <a href="#"><i class="fa-solid fa-eye text-dark" style="font-size: 20px;"></i></a></td>
+                                </tr>
+                                </tr>
+                                <tr class="item">
+                                    <td>08</td>
+                                    <td>Daily Journal (3)</td>
+                                    <td>3rd Day of Internship</td>
+                                    <td>03/02/2022</td>
+                                    <td>PDF</td>
+                                    <td>1 MB</td>
+                                    <td><a href="#"><i class="fa-solid fa-pen-to-square text-dark" style="font-size: 20px;"></i></a>
+                                        <a href="#"><i class="fa-solid fa-eye text-dark" style="font-size: 20px;"></i></a></td>
+                                </tr>
+                                </tr>
+                                <tr class="item">
+                                    <td>09</td>
+                                    <td>Daily Journal (17)</td>
+                                    <td>Our work for today</td>
+                                    <td>03/01/2022</td>
+                                    <td>PDF</td>
+                                    <td>1.1 MB</td>
+                                    <td><a href="#"><i class="fa-solid fa-pen-to-square text-dark" style="font-size: 20px;"></i></a>
+                                        <a href="#"><i class="fa-solid fa-eye text-dark" style="font-size: 20px;"></i></a></td>
+                                </tr>
+                                </tr>
+                                <tr class="item">
+                                    <td>10</td>
+                                    <td>Letter of Recommendation</td>
+                                    <td>Request for sign</td>
+                                    <td>02/28/2022</td>
+                                    <td>DOC</td>
+                                    <td>0.8 MB</td>
+                                    <td><a href="#"><i class="fa-solid fa-pen-to-square text-dark" style="font-size: 20px;"></i></a>
+                                        <a href="#"><i class="fa-solid fa-eye text-dark" style="font-size: 20px;"></i></a></td>
+                                </tr>
+                                </tr>
+                                <tr class="item">
+                                    <td>11</td>
+                                    <td>Memorandum of Agreement</td>
+                                    <td>Signed MOA</td>
+                                    <td>02/28/2022</td>
+                                    <td>DOC</td>
+                                    <td>0.9 MB</td>
+                                    <td><a href="#"><i class="fa-solid fa-pen-to-square text-dark" style="font-size: 20px;"></i></a>
+                                        <a href="#"><i class="fa-solid fa-eye text-dark" style="font-size: 20px;"></i></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+	</section>
+
+	<!-- MODAL -->
+	<div id="myModal" class="modal">
+
+		<!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header mb-2">
+      <h4>UPDATE FILE</h4>
+            <span class="close"></span>
+    </div>
+    <div class="modal-body">
+        <th>
+            <a href="#"><i class="fa-solid fa-file text-dark fa-2x"></i></a>
+            <a href="#"><i class="fa-solid fa-trash text-dark fa-2x"></i></a>
+            <a href="#"><span style="float:right;"><i class='bx bx-list-ul text-dark fa-2x'></i></a>
+            <a href="#"><span style="float:right;"><i class='bx bxs-grid text-dark fa-2x'></i></a>
+        </th>
+
+<table class="table mt-2">
+ <thead>
+  <tr>
+    <th><input type="checkbox" onclick="return false;"></th>
+    <th>File name</th>
+    <th>Last modified</th>
+    <th>Size</th>
+    <th>Type</th>
+  </tr>
+  </thead>
+  <tr> 
+    <td><input type="checkbox" id="filename1" name="filename1" value="File"></td>
+    <td>Clarisse Jacob</td>
+    <td>03/17/2022, 9:39</td>
+    <td>69kb</td>
+    <td>PDF</td>
+  </tr>
+  <tr><td></td></tr>
+  <tr><td></td></tr>
+  <tr><td></td></tr>
+  <tr><td></td></tr>
+  <tr><td></td></tr>
+</table>
+    </div>
+
+    <div class="modal-footer mb-2">
+      <button class="button submit" type="submit" value="submit">SAVE CHANGES</button>
+      <button class="button reset" type="reset" value="reset">CANCEL</button>
+    </div>
+  </div>
+
+</div>
+
+	<footer>&copy; Copyright 2022 - Project-IT-25 - Melham Construction Interns</footer>
+	<!-- CHART JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@0.7.0"></script>
+	<!-- BOOTSTRAP JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="https://www.kryogenix.org/code/browser/sorttable/sorttable.js"></script>
+	<!-- LOCAL JS -->
+    <script type="text/javascript" src="../js/sidebar.js"></script>
+	<script type="text/javascript" src="update-modal.js"></script>
+</body>
+</html>

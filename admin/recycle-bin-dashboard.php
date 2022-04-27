@@ -1,5 +1,19 @@
 <?php 
 include("../connection.php");
+session_start();
+
+ if (!isset($_SESSION['id']))
+  {
+    if (!isset($_SESSION['Email']))
+    {
+     echo "<script type='text/javascript'>alert('You must login first!');</script>";
+     echo "<script type='text/javascript'> document.location = '../index.php'; </script>";
+}
+}
+	$email=$_SESSION['Email'];
+if($_SESSION["UserLevel"] == 1 ){  
+header("location:javascript://history.go(-1)"); //return to previous page
+} 
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +64,7 @@ include("../connection.php");
 				</a>
 			</li>
 			<li>
-				<a href="../index.php">
+				<a href="../logout.php">
 					<i class='bx bx-log-out'></i>
 					<span class="link-name">Logout</span>
 				</a>
@@ -68,7 +82,7 @@ include("../connection.php");
 				<i class='bx bx-search'></i>
 			</div> -->
 			<div class="d-flex justify-content-center align-items-center">
-				<span class="name">Admin</span>
+				<span class="name"><?php echo $_SESSION['FirstName']?></span>
 			</div>
 		</nav>
 
@@ -79,7 +93,15 @@ include("../connection.php");
 				<div class="col-md-6 overview">
 					<div class="p-3 shadow-sm d-flex justify-content-around align-items-center rounded text-white" style="background: #6990F2">
 						<div>
-							<h3 class="fs-2">42069</h3>
+							<!--COUNT ALL THE FILES IN RECYCLE BIN-->
+					<?php
+					$result = mysqli_query($connections, "SELECT COUNT(*) FROM recycletbl");
+					$row = mysqli_fetch_array($result);
+
+					$total = $row [0];
+					echo ' <h3 class="fs-2"> '.$total.' </h3>'
+
+					?>
 							<p class="fs-3">Deleted Files</p>
 						</div>
 						<i class="fa-solid fa-file text-white p-3" style="font-size: 40px;"></i>
@@ -106,11 +128,12 @@ include("../connection.php");
 			<table class="table sortable table-responsive-md table-bordered bg-white rounded shadow-sm  table-striped text-center">
 				<thead class="thead-color">
 					<tr>
-						<th scope="col">ID</th>
+						<th scope="col">Email</th>
+						<th scope="col">Department</th>
 						<th scope="col">File Name</th>
 						<th scope="col">File Type</th>
-						<th scope="col">Date Removed</th>
 						<th scope="col">File Size</th>
+						<th scope="col">Date Removed</th>
 						<th scope="col">Action</th>
 					</tr>
 				</thead>
@@ -141,7 +164,7 @@ include("../connection.php");
                     while ($row = mysqli_fetch_assoc($result)){
                         $File_ID = $row['File_ID'];
                         $email = $row['Email'];
-                        $department = $row['Department'];
+                        $department = $row['team'];
                         $FileName = $row['FileName'];
                         $FileType = $row['FileType'];
                         $FileSize = $row['FileSize'];
@@ -156,8 +179,8 @@ include("../connection.php");
                         <td> '.$FileType.' </td>
                         <td> '.formatSizeUnits($FileSize).' </td>
                         <td> '.$LastModified.' </td>
-                        <td class="mx-auto d-flex justify-content-around"><a href="#"><i class="fa-solid fa-eye text-dark" style="font-size: 20px;"></i></a>
-                        <a onclick="javascript:confirmationDelete($(this));return false;" href="../delete.php?deleteid='.$File_ID.'"><i class="fa-solid fa-trash text-dark" style="font-size: 20px;"></i></a></td>
+                        <td class="mx-auto"><a onclick="javascript:confirmationRestore($(this));return false;" href="restorefile.php?restoreid='.$File_ID.'"><i class="fa-solid fa-trash-arrow-up text-dark" style="font-size: 20px;"></i></a>
+                        <a onclick="javascript:confirmationDelete($(this));return false;" href="delete.php?deleteid='.$File_ID.'"><i class="fa-solid fa-trash text-dark" style="font-size: 20px;"></i></a></td>
                         </tr> ';
 
                         // DELETE IF FILE EXPIRED

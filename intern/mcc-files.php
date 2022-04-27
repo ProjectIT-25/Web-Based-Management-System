@@ -1,6 +1,19 @@
 <?php 
+session_start();
 include("../connection.php");
 
+
+ if (!isset($_SESSION['id']))
+  {
+    if (!isset($_SESSION['Email']))
+    {
+     echo "<script type='text/javascript'>alert('You must login first!');</script>";
+     echo "<script type='text/javascript'> document.location = '../index.php'; </script>";
+}
+}
+if($_SESSION["UserLevel"] == 0 ){  
+header("location:javascript://history.go(-1)");
+} 
 ?>
 <!DOCTYPE html>
 <html>
@@ -45,7 +58,7 @@ include("../connection.php");
                 </a>
             </li>
             <li>
-                <a href="../index.php">
+                <a href="../logout.php">
                     <i class='bx bx-log-out'></i>
                     <span class="link-name">Logout</span>
                 </a>
@@ -63,7 +76,7 @@ include("../connection.php");
 <i class='bx bx-search'></i>
 </div> -->
 <div class="d-flex justify-content-center align-items-center">
-    <span class="name">Intern</span>
+    <span class="name"><?php echo htmlentities($_SESSION['FirstName']);?></span>
 </div>
 </nav>
 
@@ -71,9 +84,9 @@ include("../connection.php");
     <div class="row g3 my-3">
         <div class="col-md-6 overview">
             <a href="announcement.php">
-                <div class="p-3 shadow-sm d-flex justify-content-around align-items-center rounded" style="background-color: #6990F2; padding: 36px !important;">
-                    <div>
-                        <h3 class="fs-2 text-white">ANNOUNCEMENT AND EVENTS</h3>
+                <div class="p-3 shadow-sm d-flex justify-content-around align-items-center rounded" style="background-color: #6990F2;">
+                    <div style="border: 1px solid white; padding: 20px 80px; border-radius: 5px;">
+                        <h3 class="fs-2 text-white">ANNOUNCEMENTS AND EVENTS</h3>
                     </div>
                 </div>
             </a>
@@ -111,9 +124,7 @@ include("../connection.php");
                 <th>File Type</th>
                 <th>File Size</th>
                 <th>Last Date Modified</th> 
-
                 <th style="pointer-events: none;">Action</th>
-
             </tr>
         </thead>
         <tbody>
@@ -139,7 +150,9 @@ include("../connection.php");
                 } return $bytes; 
             }
 
-            $result = mysqli_query($connections, "SELECT * FROM filetbl LIMIT $start_from, $limit");
+            $email = $_SESSION['Email'];
+
+            $result = mysqli_query($connections, "SELECT * FROM filetbl WHERE Email='$email' LIMIT $start_from, $limit");
             if ($result) {
                 while ($row = mysqli_fetch_assoc($result)){
                     $File_ID = $row['File_ID'];
@@ -155,8 +168,8 @@ include("../connection.php");
                     <td> '.$FileType.' </td>
                     <td> '.formatSizeUnits($FileSize).' </td>
                     <td> '.$LastModified.' </td>
-                    <td class="mx-auto d-flex justify-content-around"><a href="#"><i class="fa-solid fa-eye text-dark" style="font-size: 20px;"></i></a>
-                    <a onclick="javascript:confirmationDelete($(this));return false;" href="../delete.php?deleteid='.$File_ID.'"><i class="fa-solid fa-trash text-dark" style="font-size: 20px;"></i></a></td>
+                    <td class="mx-auto d-flex justify-content-around"><a href="#"><i class="fa-solid fa-eye text-dark" style="font-size: 23px;"></i></a>
+                    <a onclick="javascript:confirmationDelete($(this));return false;" href="../delete.php?deleteid='.$File_ID.'"><i class="fa-solid fa-trash text-dark" style="font-size: 23px;"></i></a></td>
                     </tr> ';
                 }
 
@@ -188,7 +201,7 @@ include("../connection.php");
         <?php
         $pagLink = "<ul class='pagination'>";  
         for ($i=1; $i<=$total_pages; $i++) {
-            $pagLink .= "<li class='page-item'><a class='page-link' href='pending-accounts.php?page=".$i."'>".$i."</a></li>";   
+            $pagLink .= "<li class='page-item'><a class='page-link' href='mcc-files.php?page=".$i."'>".$i."</a></li>";   
         }
         echo $pagLink . "</ul>";  
 
@@ -229,8 +242,12 @@ if(isset($_POST['upload']))
     $file_size = $_FILES['file']['size'];
     $folder="../upload/";
     $extension = pathinfo($file, PATHINFO_EXTENSION);
+        date_default_timezone_set('Asia/Manila');
+
     $LastModified = date('Y-m-d H:i:s');
     $expiration = date('Y-m-d H:i:s', strtotime('+30 days'));
+    $email = $_SESSION['Email'];
+    $team = $_SESSION['team'];
 
     if ($extension == "docx"){
         $file_type = "Word Document";
@@ -254,7 +271,7 @@ if(isset($_POST['upload']))
 
     if(move_uploaded_file($file_loc,$folder.$file))
     {
-        $sql="INSERT INTO filetbl(FileName,FileType,FileSize, LastModified, Expiration) VALUES('$file','$file_type','$new_size', '$LastModified', '$expiration')";
+        $sql="INSERT INTO filetbl VALUES ('','$email','$team','$file','$file_type','$new_size', '$LastModified', '$expiration')";
         mysqli_query($connections,$sql);
 
         echo "<script>window.location.href='mcc-files.php';
